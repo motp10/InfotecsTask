@@ -68,12 +68,12 @@ ParseResult ArgumentParser::ParseCommandLineArguments(int argc, char* argv[]) {
   }
 
   if (!has_file_) {
-    error_message_ = "The --file option is required";
+    error_message_ = "The: --file option is required";
     return ParseResult::kError;
   }
 
   if (!has_level_) {
-    error_message_ = "The --level option is required";
+    error_message_ = "The: --level option is required";
     return ParseResult::kError;
   }
 

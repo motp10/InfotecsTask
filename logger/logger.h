@@ -3,12 +3,7 @@
 #include <fstream>
 #include <mutex>
 #include <string>
-
-enum class ImportanceLevel {
-  kLow,
-  kMedium,
-  kHigh,
-};
+#include "importance_level.h"
 
 enum class LogResult {
   kWritten,

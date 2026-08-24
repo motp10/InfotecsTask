@@ -12,7 +12,7 @@ int main(int argc, char* argv[]) {
     ArgumentParser argument_parser;
     MessageParser message_parser(ImportanceLevel::kMedium);
     MessageQueue message_queue;
-    const auto parse_result = argument_parser.ParseCommandLineArguments(argc, argv);
+    argument_parser.ParseCommandLineArguments(argc, argv);
     FileLogger logger(argument_parser.Options().log_file,
                           ImportanceLevel::kMedium);
     std::thread worker_thread([&message_queue, &argument_parser, &logger]() {
@@ -38,8 +38,10 @@ int main(int argc, char* argv[]) {
             std::cerr << message_parser.ErrorMessage() << '\n';
             continue;
         }
-
         message_queue.Push(*message);
     }
+    
+    message_queue.Close();
+    worker_thread.join();
     return 0;
 }

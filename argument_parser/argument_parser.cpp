@@ -1,6 +1,7 @@
 #include "argument_parser.h"
 
 #include <string_view>
+#include <stdexcept>
 
 namespace {
   constexpr std::string_view kFileOptionShort = "-f";
@@ -9,6 +10,18 @@ namespace {
   constexpr std::string_view kLevelOptionLong = "--level";
   constexpr std::string_view kHelpOptionShort = "-h";
   constexpr std::string_view kHelpOptionLong = "--help";
+
+  ImportanceLevel ParseImportanceLevel(const std::string& level_str) {
+    if (level_str == "low") {
+      return ImportanceLevel::kLow;
+    } else if (level_str == "medium") {
+      return ImportanceLevel::kMedium;
+    } else if (level_str == "high") {
+      return ImportanceLevel::kHigh;
+    } else {
+      throw std::invalid_argument("Invalid importance level: " + level_str);
+    }
+  }
 }  // namespace
 
 ParseResult ArgumentParser::ParseCommandLineArguments(int argc, char* argv[]) {
@@ -97,7 +110,7 @@ void ArgumentParser::ParseLevelOption(int argc, char* argv[], int index) {
     return;
   }
 
-  options_.level = argv[index + 1];
+  options_.level = ParseImportanceLevel(argv[index + 1]);
   has_level_ = true;
 }
 

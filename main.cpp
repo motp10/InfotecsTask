@@ -10,11 +10,13 @@
 
 int main(int argc, char* argv[]) {
     ArgumentParser argument_parser;
-    MessageParser message_parser(ImportanceLevel::kMedium);
-    MessageQueue message_queue;
     argument_parser.ParseCommandLineArguments(argc, argv);
+
+    MessageParser message_parser(argument_parser.Options().level);
+    MessageQueue message_queue;
+
     FileLogger logger(argument_parser.Options().log_file,
-                          ImportanceLevel::kMedium);
+                          argument_parser.Options().level);
     std::thread worker_thread([&message_queue, &argument_parser, &logger]() {
         Worker worker(message_queue, logger);
         worker.Run();
@@ -40,7 +42,7 @@ int main(int argc, char* argv[]) {
         }
         message_queue.Push(*message);
     }
-    
+
     message_queue.Close();
     worker_thread.join();
     return 0;

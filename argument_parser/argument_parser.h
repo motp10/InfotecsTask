@@ -1,10 +1,11 @@
 #pragma once
 
 #include <string>
+#include "importance_level.h"
 
 struct ConsoleOptions {
   std::string log_file;
-  std::string level;
+  ImportanceLevel level;
 };
 
 enum class ParseResult {

@@ -1,5 +1,4 @@
-#ifndef INFOTEXS_LOGGER_H_
-#define INFOTEXS_LOGGER_H_
+#pragma once
 
 #include <fstream>
 #include <mutex>
@@ -30,7 +29,7 @@ class FileLogger {
 
   LogResult Log(const std::string& message, ImportanceLevel level);
 
-  // Returns false and keeps the current level if new_level is invalid.
+  // Returns true if the importance level was successfully set, false otherwise.
   bool SetImportanceLevel(ImportanceLevel new_level);
 
  private:
@@ -38,5 +37,3 @@ class FileLogger {
   ImportanceLevel default_importance_level_;
   std::mutex mutex_;
 };
-
-#endif  // INFOTEXS_LOGGER_H_

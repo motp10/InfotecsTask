@@ -13,8 +13,8 @@ enum class ParseResult {
   kError,
 };
 
-class ConsoleParser {
- public:
+class ArgumentParser {
+public:
   ParseResult ParseCommandLineArguments(int argc, char* argv[]);
 
   const ConsoleOptions& Options() const;

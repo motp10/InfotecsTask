@@ -19,9 +19,9 @@ enum class LogResult {
 };
 
 class FileLogger {
- public:
+public:
   FileLogger(const std::string& filename,
-             ImportanceLevel default_importance_level);
+              ImportanceLevel default_importance_level);
   ~FileLogger();
 
   FileLogger(const FileLogger&) = delete;
@@ -32,7 +32,7 @@ class FileLogger {
   // Returns true if the importance level was successfully set, false otherwise.
   bool SetImportanceLevel(ImportanceLevel new_level);
 
- private:
+private:
   std::ofstream log_file_;
   ImportanceLevel default_importance_level_;
   std::mutex mutex_;

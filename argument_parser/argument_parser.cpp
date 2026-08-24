@@ -1,4 +1,4 @@
-#include "console_parser.h"
+#include "argument_parser.h"
 
 #include <string_view>
 
@@ -11,7 +11,7 @@ namespace {
   constexpr std::string_view kHelpOptionLong = "--help";
 }  // namespace
 
-ParseResult ConsoleParser::ParseCommandLineArguments(int argc, char* argv[]) {
+ParseResult ArgumentParser::ParseCommandLineArguments(int argc, char* argv[]) {
   options_ = ConsoleOptions{};
   error_message_.clear();
   program_name_ = argc > 0 ? argv[0] : "logger_app";
@@ -67,7 +67,7 @@ ParseResult ConsoleParser::ParseCommandLineArguments(int argc, char* argv[]) {
   return ParseResult::kOk;
 }
 
-void ConsoleParser::ParseFileOption(int argc, char* argv[], int index) {
+void ArgumentParser::ParseFileOption(int argc, char* argv[], int index) {
   if (has_file_) {
     error_message_ = "The " + std::string(argv[index]) +
                      " option is specified multiple times";
@@ -84,7 +84,7 @@ void ConsoleParser::ParseFileOption(int argc, char* argv[], int index) {
   has_file_ = true;
 }
 
-void ConsoleParser::ParseLevelOption(int argc, char* argv[], int index) {
+void ArgumentParser::ParseLevelOption(int argc, char* argv[], int index) {
   if (has_level_) {
     error_message_ = "The " + std::string(argv[index]) +
                      " option is specified multiple times";
@@ -101,19 +101,19 @@ void ConsoleParser::ParseLevelOption(int argc, char* argv[], int index) {
   has_level_ = true;
 }
 
-const ConsoleOptions& ConsoleParser::Options() const {
+const ConsoleOptions& ArgumentParser::Options() const {
   return options_;
 }
 
-const std::string& ConsoleParser::ErrorMessage() const {
+const std::string& ArgumentParser::ErrorMessage() const {
   return error_message_;
 }
 
-const std::string& ConsoleParser::ProgramName() const {
+const std::string& ArgumentParser::ProgramName() const {
   return program_name_;
 }
 
-const char* ConsoleParser::HelpText() {
+const char* ArgumentParser::HelpText() {
   return "Usage: logger_app --file <path> --level <low|medium|high>\n"
          "\n"
          "Options:\n"

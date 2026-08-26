@@ -1,5 +1,5 @@
 #include "logger.h"
-
+#include "message_formater.h"
 #include <ctime>
 #include <iomanip>
 #include <optional>
@@ -8,7 +8,7 @@
 
 FileLogger::FileLogger(const std::string& filename,
                        ImportanceLevel default_importance_level)
-    : default_importance_level_(default_importance_level) {
+  : default_importance_level_(default_importance_level) {
   if (!ImportanceLevelToString(default_importance_level_).has_value()) {
     throw std::invalid_argument("Invalid default importance level");
   }
@@ -29,11 +29,6 @@ FileLogger::~FileLogger() {
 LogResult FileLogger::Log(const std::string& message, ImportanceLevel level) {
   std::lock_guard<std::mutex> lock(mutex_);
 
-  const auto level_name = ImportanceLevelToString(level);
-  if (!level_name.has_value()) {
-    return LogResult::kInvalidLevel;
-  }
-
   if (level < default_importance_level_) {
     return LogResult::kFiltered;
   }
@@ -42,13 +37,21 @@ LogResult FileLogger::Log(const std::string& message, ImportanceLevel level) {
     return LogResult::kWriteError;
   }
 
-  const auto timestamp = CurrentLocalTime();
-  if (timestamp.empty()) {
+  std::string formatted_message;
+
+  try {
+    formatted_message = MessageFormatter::FormatMessage(message, level);
+  }
+  catch (const InvalidImportanceLevelError&) {
+    return LogResult::kInvalidLevel;
+  }
+  catch (const TimestampError&) {
     return LogResult::kTimestampError;
   }
 
-  log_file_ << '[' << timestamp << "] [" << *level_name << "] " << message << '\n';
-  
+  log_file_ << formatted_message << '\n';
+
+
   return log_file_ ? LogResult::kWritten : LogResult::kWriteError;
 }
 

@@ -27,10 +27,18 @@ std::string CurrentLocalTime() {
 
 std::string MessageFormatter::FormatMessage(const std::string& message,
                                             ImportanceLevel level) {
-    std::time_t now = std::time(nullptr);
-    char timestamp[20];
-    std::strftime(timestamp, sizeof(timestamp), "%Y-%m-%d %H:%M:%S", std::localtime(&now));
+    auto time = CurrentLocalTime();
 
-    return "[" + std::string(timestamp) + "] [" +
-           std::to_string(static_cast<int>(level)) + "] " + message;
+    if (time.empty()) {
+        throw TimestampError("Failed to get current local time");
+    }
+
+    auto level_str = ImportanceLevelToString(level);
+
+    if (!level_str.has_value()) {
+        throw InvalidImportanceLevelError("Invalid importance level");
+    }
+
+    return "[" + time + "] [" +
+           level_str.value() + "] " + message;
 }

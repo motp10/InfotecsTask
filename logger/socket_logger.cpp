@@ -1,5 +1,3 @@
-#include "logger.h"
-
 #include <cerrno>
 #include <cstring>
 #include <iomanip>
@@ -9,10 +7,13 @@
 #include <sys/socket.h>
 #include <unistd.h>
 
+#include "logger.h"
+#include "message_formater.h"
+
 SocketLogger::SocketLogger(const std::string& host, uint16_t port,
                            ImportanceLevel default_importance_level)
-    : socket_(-1),
-      default_importance_level_(default_importance_level) {
+    : socket_(-1)
+    , default_importance_level_(default_importance_level) {
     const std::string port_string = std::to_string(port);
 
     struct addrinfo hints {};
@@ -78,15 +79,15 @@ LogResult SocketLogger::Log(
     std::lock_guard<std::mutex> lock(mutex_);
 
     if (level < default_importance_level_) {
-        return LogResult::Filtered;
+        return LogResult::kFiltered;
     }
 
     const std::string formatted_message =
-        FormatMessage(message, level);
+        MessageFormatter::FormatMessage(message, level);
 
     SendAll(formatted_message);
 
-    return LogResult::Logged;
+    return LogResult::kWritten;
 }
 
 bool SocketLogger::SetImportanceLevel(
@@ -122,41 +123,4 @@ void SocketLogger::SendAll(const std::string& data) {
 
         total_sent += static_cast<std::size_t>(bytes_sent);
     }
-}
-
-std::string SocketLogger::FormatMessage(
-    const std::string& message,
-    ImportanceLevel level) const {
-
-    std::ostringstream output;
-
-    const std::time_t now = std::time(nullptr);
-    std::tm local_time{};
-
-    if (localtime_r(&now, &local_time) == nullptr) {
-        throw std::runtime_error(
-            "Failed to get local time");
-    }
-
-    output << '['
-           << std::put_time(&local_time, "%Y-%m-%d %H:%M:%S")
-           << "] [";
-
-    switch (level) {
-        case ImportanceLevel::LOW:
-            output << "LOW";
-            break;
-
-        case ImportanceLevel::MEDIUM:
-            output << "MEDIUM";
-            break;
-
-        case ImportanceLevel::HIGH:
-            output << "HIGH";
-            break;
-    }
-
-    output << "] " << message << '\n';
-
-    return output.str();
 }

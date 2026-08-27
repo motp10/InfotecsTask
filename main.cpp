@@ -6,7 +6,7 @@
 #include "message_parser/message_parser.h"
 #include "messages/message_queue.h"
 #include "worker/worker.h"
-#include "logger/logger.h"
+#include "loggers/file_logger.h"
 
 int main(int argc, char* argv[]) {
     ArgumentParser argument_parser;

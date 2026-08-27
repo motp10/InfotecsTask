@@ -1,4 +1,4 @@
-#include "logger.h"
+#include "file_logger.h"
 #include "message_formater.h"
 #include <ctime>
 #include <iomanip>
@@ -27,8 +27,6 @@ FileLogger::~FileLogger() {
 }
 
 LogResult FileLogger::Log(const std::string& message, ImportanceLevel level) {
-  std::lock_guard<std::mutex> lock(mutex_);
-
   if (level < default_importance_level_) {
     return LogResult::kFiltered;
   }
@@ -56,8 +54,6 @@ LogResult FileLogger::Log(const std::string& message, ImportanceLevel level) {
 }
 
 bool FileLogger::SetImportanceLevel(ImportanceLevel new_level) {
-  std::lock_guard<std::mutex> lock(mutex_);
-
   if (!ImportanceLevelToString(new_level).has_value()) {
     return false;
   }

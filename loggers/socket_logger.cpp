@@ -7,7 +7,7 @@
 #include <sys/socket.h>
 #include <unistd.h>
 
-#include "logger.h"
+#include "socket_logger.h"
 #include "message_formater.h"
 
 SocketLogger::SocketLogger(const std::string& host, uint16_t port,
@@ -16,11 +16,11 @@ SocketLogger::SocketLogger(const std::string& host, uint16_t port,
     , default_importance_level_(default_importance_level) {
     const std::string port_string = std::to_string(port);
 
-    struct addrinfo hints {};
+    addrinfo hints {};
     hints.ai_family = AF_UNSPEC;
     hints.ai_socktype = SOCK_STREAM;
 
-    struct addrinfo* result = nullptr;
+    addrinfo* result = nullptr;
 
     const int status = getaddrinfo(
         host.c_str(),
@@ -34,7 +34,7 @@ SocketLogger::SocketLogger(const std::string& host, uint16_t port,
             std::string(gai_strerror(status)));
     }
 
-    for (struct addrinfo* address = result;
+    for (addrinfo* address = result;
          address != nullptr;
          address = address->ai_next) {
 
@@ -76,14 +76,11 @@ LogResult SocketLogger::Log(
     const std::string& message,
     ImportanceLevel level) {
 
-    std::lock_guard<std::mutex> lock(mutex_);
-
     if (level < default_importance_level_) {
         return LogResult::kFiltered;
     }
 
-    const std::string formatted_message =
-        MessageFormatter::FormatMessage(message, level);
+    const std::string formatted_message = MessageFormatter::FormatMessage(message, level);
 
     SendAll(formatted_message);
 
@@ -92,8 +89,6 @@ LogResult SocketLogger::Log(
 
 bool SocketLogger::SetImportanceLevel(
     ImportanceLevel new_level) {
-
-    std::lock_guard<std::mutex> lock(mutex_);
 
     default_importance_level_ = new_level;
 

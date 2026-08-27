@@ -1,8 +1,10 @@
 #include <string>
+#include "../common_lib/importance_level.h"
+#include "../messages/message.h"
 
-class MessageDeserializor {
+class MessageDeserializer {
 public:
-    MessageDeserializor() = default;
-    ~MessageDeserializor() = default;
-    static std::string Deserialize(const std::string& message);
+    MessageDeserializer() = default;
+    ~MessageDeserializer() = default;
+    static Message Deserialize(const std::string& message);
  };

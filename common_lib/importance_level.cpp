@@ -1,12 +1,4 @@
-#pragma once
-
-#include <optional>
-
-enum class ImportanceLevel {
-  kLow,
-  kMedium,
-  kHigh,
-};
+#include "importance_level.h"
 
 std::optional<const char*> ImportanceLevelToString(ImportanceLevel level) {
   switch (level) {

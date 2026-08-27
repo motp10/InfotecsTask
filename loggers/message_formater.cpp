@@ -5,25 +5,8 @@
 #include <stdexcept>
 
 #include "message_formater.h"
+#include "../common_lib/time_utils.h"
 
-namespace {
-
-std::string CurrentLocalTime() {
-    const std::time_t now = std::time(nullptr);
-    std::tm local_time{};
-
-    localtime_r(&now, &local_time);
-    if (localtime_r(&now, &local_time) == nullptr) {
-        return {};
-    }
-    
-    std::ostringstream stream;
-    stream << std::put_time(&local_time, "%Y-%m-%d %H:%M:%S");
-
-    return stream.str();
-}
-
-}  // namespace
 
 std::string MessageFormatter::FormatMessage(const std::string& message,
                                             ImportanceLevel level) {

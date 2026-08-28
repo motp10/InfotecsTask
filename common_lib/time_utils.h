@@ -1,3 +1,5 @@
 #include <string>
 
-std::string CurrentLocalTime();
+std::string CurrentTime();
+
+std::string FormatLocalTime();

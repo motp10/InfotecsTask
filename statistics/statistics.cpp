@@ -1,12 +1,6 @@
-#include <cerrno>
+#include <stdexcept>
 #include "statistics.h"
 #include "../common_lib/time_utils.h"
-
-// std::deque<std::chrono::system_clock::time_point> message_times_;
-//   std::size_t max_message_length_ = 0;
-//   std::size_t min_message_length_ = 0;
-//   std::size_t sum_message_length_ = 0;
-//   std::array<std::size_t, 3> importance_counts_{};
 
 void Statistics::AddMessage(std::size_t message_length,
                             ImportanceLevel importance,

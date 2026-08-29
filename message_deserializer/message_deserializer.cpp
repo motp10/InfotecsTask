@@ -1,4 +1,4 @@
-#include "message_deserializor.h"
+#include "message_deserializer.h"
 
 Message MessageDeserializer::Deserialize(const std::string& data) const {
 

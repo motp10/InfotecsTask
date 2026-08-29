@@ -1,5 +1,5 @@
 #include <string>
 
-std::string CurrentTime();
+std::chrono::system_clock::time_point CurrentTime();
 
 std::string FormatLocalTime();

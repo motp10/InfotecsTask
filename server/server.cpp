@@ -1,14 +1,14 @@
-#include "server.h"
-
-#include "server.h"
-
 #include <cerrno>
 #include <cstring>
 #include <stdexcept>
 
+
 #include <netinet/in.h>
 #include <sys/socket.h>
 #include <unistd.h>
+#include <poll.h>
+
+#include "server.h"
 
 Server::Server(uint16_t port)
     : port_(port)
@@ -96,27 +96,80 @@ Server::~Server() {
     }
 }
 
-std::string Server::ReceiveMessage() {
-  constexpr std::size_t kBufferSize = 4096;
+std::optional<std::string> Server::ReceiveMessage(std::chrono::milliseconds timeout) {
 
-  char buffer[kBufferSize];
+  const std::size_t message_end = receive_buffer_.find('\n');
 
-  const ssize_t bytes_received = recv(
-      client_socket_,
-      buffer,
-      kBufferSize,
-      0);
+  if (message_end != std::string::npos) {
+    std::string message = receive_buffer_.substr(0, message_end);
 
-  if (bytes_received == -1) {
+    receive_buffer_.erase(0, message_end + 1);
+
+    return message;
+  }
+
+  pollfd poll_fd{};
+
+  poll_fd.fd = client_socket_;
+  poll_fd.events = POLLIN;
+
+  const int timeout_ms = static_cast<int>(timeout.count());
+
+  const int result = poll(
+      &poll_fd,
+      1,
+      timeout_ms);
+
+  if (result == -1) {
     throw std::runtime_error(
-        "Failed to receive message: " +
+        "Failed to poll socket: " +
         std::string(std::strerror(errno)));
   }
 
-  if (bytes_received == 0) {
-    throw std::runtime_error(
-        "Client closed the connection");
+  if (result == 0) {
+    return std::nullopt;
   }
 
-  return std::string(buffer, bytes_received);
+  if (poll_fd.revents & (POLLERR | POLLNVAL)) {
+    throw std::runtime_error("Socket error occurred");
+  }
+
+  if (poll_fd.revents & POLLHUP) {
+    throw std::runtime_error("Client closed the connection");
+  }
+
+  if (poll_fd.revents & POLLIN) {
+    constexpr std::size_t kBufferSize = 4096;
+
+    char buffer[kBufferSize];
+
+    const ssize_t bytes_received = recv(
+        client_socket_,
+        buffer,
+        kBufferSize,
+        0);
+
+    if (bytes_received == -1) {
+      throw std::runtime_error("Failed to receive message: " +
+                                std::string(std::strerror(errno)));
+    }
+
+    if (bytes_received == 0) {
+      throw std::runtime_error("Client closed the connection");
+    }
+
+    receive_buffer_.append(buffer, bytes_received);
+
+    const std::size_t message_end = receive_buffer_.find('\n');
+
+    if (message_end != std::string::npos) {
+      std::string message = receive_buffer_.substr(0, message_end);
+
+      receive_buffer_.erase(0, message_end + 1);
+
+      return message;
+    }
+  }
+
+  return std::nullopt;
 }

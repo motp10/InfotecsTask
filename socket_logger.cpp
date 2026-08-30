@@ -2,23 +2,26 @@
 #include <thread>
 #include <iostream>
 
-#include "argument_parser/argument_parser.h"
+#include "argument_parsers/socket_argument_parser.h"
 #include "message_parser/message_parser.h"
 #include "messages/message_queue.h"
 #include "worker/worker.h"
 #include "loggers/file_logger.h"
+#include "loggers/socket_logger.h"
 
 int main(int argc, char* argv[]) {
-    ArgumentParser argument_parser;
+    SocketArgumentParser argument_parser;
     argument_parser.ParseCommandLineArguments(argc, argv);
 
     MessageParser message_parser(argument_parser.Options().level);
     MessageQueue message_queue;
 
-    FileLogger logger(argument_parser.Options().log_file,
-                          argument_parser.Options().level);
-    std::thread worker_thread([&message_queue, &argument_parser, &logger]() {
-        Worker worker(message_queue, logger);
+    SocketLogger socket_logger(argument_parser.Options().host,
+                               argument_parser.Options().port,
+                               argument_parser.Options().level);
+
+    std::thread worker_thread([&message_queue, &argument_parser, &socket_logger]() {
+        Worker worker(message_queue, socket_logger);
         worker.Run();
     });
     while (true) {

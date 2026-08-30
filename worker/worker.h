@@ -1,6 +1,6 @@
 #pragma once
 #include "../messages/message_queue.h"
-#include "../loggers/logger.h"
+#include "../loggers/i_logger.h"
 
 class Worker {
 public:

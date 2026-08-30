@@ -16,7 +16,6 @@ public:
 
   LogResult Log(const std::string& message, ImportanceLevel level) override;
 
-  // Returns true if the importance level was successfully set, false otherwise.
   bool SetImportanceLevel(ImportanceLevel new_level) override;
 
 private:

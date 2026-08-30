@@ -1,4 +1,4 @@
-#include "argument_parser.h"
+#include "file_argument_parser.h"
 
 #include <string_view>
 #include <stdexcept>
@@ -24,7 +24,7 @@ namespace {
   }
 }  // namespace
 
-ParseResult ArgumentParser::ParseCommandLineArguments(int argc, char* argv[]) {
+ParseResult FileArgumentParser::ParseCommandLineArguments(int argc, char* argv[]) {
   options_ = ConsoleOptions{};
   error_message_.clear();
   program_name_ = argc > 0 ? argv[0] : "logger_app";
@@ -80,7 +80,7 @@ ParseResult ArgumentParser::ParseCommandLineArguments(int argc, char* argv[]) {
   return ParseResult::kOk;
 }
 
-void ArgumentParser::ParseFileOption(int argc, char* argv[], int index) {
+void FileArgumentParser::ParseFileOption(int argc, char* argv[], int index) {
   if (has_file_) {
     error_message_ = "The " + std::string(argv[index]) +
                      " option is specified multiple times";
@@ -97,7 +97,7 @@ void ArgumentParser::ParseFileOption(int argc, char* argv[], int index) {
   has_file_ = true;
 }
 
-void ArgumentParser::ParseLevelOption(int argc, char* argv[], int index) {
+void FileArgumentParser::ParseLevelOption(int argc, char* argv[], int index) {
   if (has_level_) {
     error_message_ = "The " + std::string(argv[index]) +
                      " option is specified multiple times";
@@ -114,19 +114,19 @@ void ArgumentParser::ParseLevelOption(int argc, char* argv[], int index) {
   has_level_ = true;
 }
 
-const ConsoleOptions& ArgumentParser::Options() const {
+const FileArgumentParser::ConsoleOptions& FileArgumentParser::Options() const {
   return options_;
 }
 
-const std::string& ArgumentParser::ErrorMessage() const {
+const std::string& FileArgumentParser::ErrorMessage() const {
   return error_message_;
 }
 
-const std::string& ArgumentParser::ProgramName() const {
+const std::string& FileArgumentParser::ProgramName() const {
   return program_name_;
 }
 
-const char* ArgumentParser::HelpText() {
+const char* FileArgumentParser::HelpText() {
   return "Usage: logger_app --file <path> --level <low|medium|high>\n"
          "\n"
          "Options:\n"

@@ -12,6 +12,7 @@ int main() {
   constexpr uint16_t kPort = 8080;
   constexpr std::size_t kMessagesToShow = 10;
   constexpr auto kPeriod = std::chrono::seconds(5);
+  
 
   try {
     Server server(kPort);
@@ -21,14 +22,23 @@ int main() {
     server.AcceptClient();
 
     auto last_print_time = CurrentTime();
-    std::size_t messages_at_last_print = 0;
+    std::size_t messages_since_print = 0;
+    auto time_to_poll = std::chrono::duration_cast<std::chrono::milliseconds>(kPeriod);
 
     while (true) {
-      const auto data = server.ReceiveMessage(kPeriod);
+      const auto data = server.ReceiveMessage(time_to_poll);
+
+      const auto time_from_last_print =
+        std::chrono::duration_cast<std::chrono::milliseconds>(
+          CurrentTime() - last_print_time);
+
+      time_to_poll =
+        std::chrono::duration_cast<std::chrono::milliseconds>(
+              kPeriod) - time_from_last_print;
 
       if (data.has_value()) {
         const Message message =
-            deserializer.Deserialize(*data);
+          deserializer.Deserialize(*data);
 
         const auto received_at = CurrentTime();
 
@@ -37,23 +47,20 @@ int main() {
             message.level,
             received_at);
 
-        const std::size_t messages_since_print =
-            statistics.TotalMessages() - messages_at_last_print;
+        ++messages_since_print;
 
         if (messages_since_print >= kMessagesToShow) {
-          printer.Print(statistics);
-          last_print_time = CurrentTime();
-          messages_at_last_print = statistics.TotalMessages();
+            printer.Print(statistics);
+
+            messages_since_print = 0;
         }
       } else {
         const auto now = CurrentTime();
 
-        if (now - last_print_time >= kPeriod &&
-            statistics.TotalMessages() > messages_at_last_print) {
+        if (time_to_poll <= std::chrono::milliseconds(0)) {
           printer.Print(statistics);
 
           last_print_time = now;
-          messages_at_last_print = statistics.TotalMessages();
         }
       }
     }

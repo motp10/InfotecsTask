@@ -11,7 +11,16 @@
 
 int main(int argc, char* argv[]) {
     SocketArgumentParser argument_parser;
-    argument_parser.ParseCommandLineArguments(argc, argv);
+    const ParseResult parse_result =
+        argument_parser.ParseCommandLineArguments(argc, argv);
+    if (parse_result == ParseResult::kHelpRequested) {
+        std::cout << SocketArgumentParser::HelpText();
+        return 0;
+    }
+    if (parse_result != ParseResult::kOk) {
+        std::cerr << argument_parser.ErrorMessage() << '\n';
+        return 1;
+    }
 
     MessageParser message_parser(argument_parser.Options().level);
     MessageQueue message_queue;
@@ -19,8 +28,12 @@ int main(int argc, char* argv[]) {
     SocketLogger socket_logger(argument_parser.Options().host,
                                argument_parser.Options().port,
                                argument_parser.Options().level);
+    if (socket_logger.Connect() != SocketLoggerResult::kOk) {
+        std::cerr << "Unable to connect to server\n";
+        return 1;
+    }
 
-    std::thread worker_thread([&message_queue, &argument_parser, &socket_logger]() {
+    std::thread worker_thread([&message_queue, &socket_logger]() {
         Worker worker(message_queue, socket_logger);
         worker.Run();
     });

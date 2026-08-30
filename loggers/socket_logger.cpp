@@ -1,7 +1,4 @@
-#include <iomanip>
 #include <netdb.h>
-#include <sstream>
-#include <stdexcept>
 #include <sys/socket.h>
 #include <unistd.h>
 
@@ -10,9 +7,22 @@
 
 SocketLogger::SocketLogger(const std::string& host, uint16_t port,
                            ImportanceLevel default_importance_level)
-    : socket_(-1)
+    : host_(host)
+    , port_(port)
+    , socket_(-1)
     , default_importance_level_(default_importance_level) {
-    const std::string port_string = std::to_string(port);
+}
+
+SocketLoggerResult SocketLogger::Connect() {
+    if (!ImportanceLevelToString(default_importance_level_).has_value()) {
+        return SocketLoggerResult::kInvalidLevel;
+    }
+
+    if (socket_ != -1) {
+        return SocketLoggerResult::kOk;
+    }
+
+    const std::string port_string = std::to_string(port_);
 
     addrinfo hints {};
     hints.ai_family = AF_UNSPEC;
@@ -21,16 +31,16 @@ SocketLogger::SocketLogger(const std::string& host, uint16_t port,
     addrinfo* result = nullptr;
 
     const int status = getaddrinfo(
-        host.c_str(),
+        host_.c_str(),
         port_string.c_str(),
         &hints,
         &result);
 
     if (status != 0) {
-        throw std::runtime_error(
-            "Failed to resolve host: " +
-            std::string(gai_strerror(status)));
+        return SocketLoggerResult::kResolveError;
     }
+
+    bool socket_was_created = false;
 
     for (addrinfo* address = result;
          address != nullptr;
@@ -44,6 +54,8 @@ SocketLogger::SocketLogger(const std::string& host, uint16_t port,
         if (socket_ == -1) {
             continue;
         }
+
+        socket_was_created = true;
 
         if (connect(
                 socket_,
@@ -59,9 +71,12 @@ SocketLogger::SocketLogger(const std::string& host, uint16_t port,
     freeaddrinfo(result);
 
     if (socket_ == -1) {
-        throw std::runtime_error(
-            "Failed to connect to " + host + ":" + port_string);
+        return socket_was_created
+            ? SocketLoggerResult::kConnectError
+            : SocketLoggerResult::kSocketError;
     }
+
+    return SocketLoggerResult::kOk;
 }
 
 SocketLogger::~SocketLogger() {
@@ -76,6 +91,10 @@ LogResult SocketLogger::Log(
 
     if (level < default_importance_level_) {
         return LogResult::kFiltered;
+    }
+
+    if (socket_ == -1) {
+        return LogResult::kWriteError;
     }
 
     const FormatResult formatted_message = MessageFormatter::FormatMessage(message, level);
@@ -93,6 +112,10 @@ LogResult SocketLogger::Log(
 
 bool SocketLogger::SetImportanceLevel(
     ImportanceLevel new_level) {
+
+    if (!ImportanceLevelToString(new_level).has_value()) {
+        return false;
+    }
 
     default_importance_level_ = new_level;
 

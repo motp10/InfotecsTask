@@ -1,23 +1,28 @@
 #include "file_logger.h"
 #include "message_formater.h"
-#include <ctime>
-#include <iomanip>
-#include <optional>
-#include <sstream>
-#include <stdexcept>
 
 FileLogger::FileLogger(const std::string& filename,
                        ImportanceLevel default_importance_level)
-  : default_importance_level_(default_importance_level) {
+  : filename_(filename)
+  , default_importance_level_(default_importance_level) {}
+
+FileLoggerResult FileLogger::Open() {
   if (!ImportanceLevelToString(default_importance_level_).has_value()) {
-    throw std::invalid_argument("Invalid default importance level");
+    return FileLoggerResult::kInvalidLevel;
   }
 
-  log_file_.open(filename, std::ios::out | std::ios::app);
+  if (log_file_.is_open()) {
+    return FileLoggerResult::kOk;
+  }
+
+  log_file_.clear();
+  log_file_.open(filename_, std::ios::out | std::ios::app);
 
   if (!log_file_.is_open()) {
-    throw std::runtime_error("Unable to open log file: " + filename);
+    return FileLoggerResult::kOpenError;
   }
+
+  return FileLoggerResult::kOk;
 }
 
 FileLogger::~FileLogger() {

@@ -10,14 +10,28 @@
 
 int main(int argc, char* argv[]) {
     FileArgumentParser argument_parser;
-    argument_parser.ParseCommandLineArguments(argc, argv);
+    const ParseResult parse_result =
+        argument_parser.ParseCommandLineArguments(argc, argv);
+    if (parse_result == ParseResult::kHelpRequested) {
+        std::cout << FileArgumentParser::HelpText();
+        return 0;
+    }
+    if (parse_result != ParseResult::kOk) {
+        std::cerr << argument_parser.ErrorMessage() << '\n';
+        return 1;
+    }
 
     MessageParser message_parser(argument_parser.Options().level);
     MessageQueue message_queue;
 
     FileLogger logger(argument_parser.Options().log_file,
                           argument_parser.Options().level);
-    std::thread worker_thread([&message_queue, &argument_parser, &logger]() {
+    if (logger.Open() != FileLoggerResult::kOk) {
+        std::cerr << "Unable to open log file\n";
+        return 1;
+    }
+
+    std::thread worker_thread([&message_queue, &logger]() {
         Worker worker(message_queue, logger);
         worker.Run();
     });

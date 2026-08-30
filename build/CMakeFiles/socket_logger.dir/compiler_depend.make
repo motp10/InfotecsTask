@@ -57,6 +57,7 @@ CMakeFiles/socket_logger.dir/argument_parsers/socket_argument_parser.cpp.o: /hom
   /usr/include/c++/14/bits/version.h \
   /usr/include/c++/14/cctype \
   /usr/include/c++/14/cerrno \
+  /usr/include/c++/14/charconv \
   /usr/include/c++/14/clocale \
   /usr/include/c++/14/concepts \
   /usr/include/c++/14/cstddef \
@@ -73,10 +74,10 @@ CMakeFiles/socket_logger.dir/argument_parsers/socket_argument_parser.cpp.o: /hom
   /usr/include/c++/14/ext/type_traits.h \
   /usr/include/c++/14/initializer_list \
   /usr/include/c++/14/iosfwd \
+  /usr/include/c++/14/limits \
   /usr/include/c++/14/new \
   /usr/include/c++/14/optional \
   /usr/include/c++/14/pstl/pstl_config.h \
-  /usr/include/c++/14/stdexcept \
   /usr/include/c++/14/string \
   /usr/include/c++/14/string_view \
   /usr/include/c++/14/tuple \
@@ -148,6 +149,7 @@ CMakeFiles/socket_logger.dir/argument_parsers/socket_argument_parser.cpp.o: /hom
   /usr/include/x86_64-linux-gnu/c++/14/bits/c++config.h \
   /usr/include/x86_64-linux-gnu/c++/14/bits/c++locale.h \
   /usr/include/x86_64-linux-gnu/c++/14/bits/cpu_defines.h \
+  /usr/include/x86_64-linux-gnu/c++/14/bits/error_constants.h \
   /usr/include/x86_64-linux-gnu/c++/14/bits/os_defines.h \
   /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
   /usr/include/x86_64-linux-gnu/gnu/stubs.h \
@@ -1933,8 +1935,6 @@ CMakeFiles/socket_logger.dir/common_lib/time_utils.cpp.o:
 
 /home/matev/Documents/Infotexs/argument_parsers/socket_argument_parser.cpp:
 
-/usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h:
-
 /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h:
 
 /usr/include/c++/14/bits/stl_iterator_base_funcs.h:
@@ -1969,17 +1969,23 @@ CMakeFiles/socket_logger.dir/common_lib/time_utils.cpp.o:
 
 /usr/include/c++/14/tuple:
 
+/usr/include/c++/14/bits/vector.tcc:
+
+/usr/include/x86_64-linux-gnu/bits/unistd_ext.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/14/include/stddef.h:
+
 /usr/include/c++/14/string_view:
 
 /usr/include/c++/14/bits/cxxabi_init_exception.h:
-
-/usr/include/c++/14/stdexcept:
 
 /usr/include/c++/14/new:
 
 /usr/include/c++/14/bits/stl_tempbuf.h:
 
 /usr/include/linux/stddef.h:
+
+/usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h:
 
 /lib/x86_64-linux-gnu/libm.so.6:
 
@@ -2017,7 +2023,15 @@ CMakeFiles/socket_logger.dir/common_lib/time_utils.cpp.o:
 
 /home/matev/Documents/Infotexs/common_lib/importance_level.cpp:
 
+/usr/lib/linux/uapi/x86/asm/sockios.h:
+
+/usr/include/c++/14/cstddef:
+
+/usr/include/c++/14/stdexcept:
+
 /usr/include/x86_64-linux-gnu/bits/locale.h:
+
+/usr/include/features.h:
 
 /usr/include/c++/14/bits/alloc_traits.h:
 
@@ -2028,12 +2042,6 @@ CMakeFiles/socket_logger.dir/common_lib/time_utils.cpp.o:
 /usr/include/errno.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/__sigval_t.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h:
-
-/home/matev/Documents/Infotexs/message_parser/message_parser.cpp:
-
-/usr/include/x86_64-linux-gnu/bits/wchar.h:
 
 /usr/include/x86_64-linux-gnu/bits/errno.h:
 
@@ -2065,11 +2073,7 @@ CMakeFiles/socket_logger.dir/common_lib/time_utils.cpp.o:
 
 /usr/include/c++/14/bits/invoke.h:
 
-/usr/include/c++/14/bits/vector.tcc:
-
-/usr/lib/gcc/x86_64-linux-gnu/14/include/stddef.h:
-
-/usr/include/x86_64-linux-gnu/bits/unistd_ext.h:
+/usr/include/c++/14/charconv:
 
 /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h:
 
@@ -2092,8 +2096,6 @@ CMakeFiles/socket_logger.dir/argument_parsers/socket_argument_parser.cpp.o:
 /home/matev/Documents/Infotexs/argument_parsers/socket_argument_parser.h:
 
 /usr/include/alloca.h:
-
-/usr/include/features.h:
 
 /usr/include/c++/14/bits/stl_vector.h:
 
@@ -2126,10 +2128,6 @@ CMakeFiles/socket_logger.dir/argument_parsers/socket_argument_parser.cpp.o:
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
 
 /usr/include/c++/14/bits/postypes.h:
-
-/usr/lib/linux/uapi/x86/asm/sockios.h:
-
-/usr/include/c++/14/cstddef:
 
 /usr/include/c++/14/backward/binders.h:
 
@@ -2200,6 +2198,12 @@ CMakeFiles/socket_logger.dir/socket_logger.cpp.o:
 /usr/include/x86_64-linux-gnu/c++/14/bits/error_constants.h:
 
 /usr/include/x86_64-linux-gnu/bits/long-double.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h:
+
+/home/matev/Documents/Infotexs/message_parser/message_parser.cpp:
+
+/usr/include/x86_64-linux-gnu/bits/wchar.h:
 
 /usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
 
@@ -2381,15 +2385,15 @@ CMakeFiles/socket_logger.dir/common_lib/importance_level.cpp.o:
 
 /usr/include/c++/14/ext/atomicity.h:
 
-/usr/include/c++/14/bits/streambuf.tcc:
-
-/usr/include/x86_64-linux-gnu/bits/posix_opt.h:
+/usr/include/c++/14/limits:
 
 /usr/include/c++/14/bits/functional_hash.h:
 
 /usr/include/c++/14/iomanip:
 
-/usr/include/c++/14/limits:
+/usr/include/c++/14/bits/streambuf.tcc:
+
+/usr/include/x86_64-linux-gnu/bits/posix_opt.h:
 
 /usr/include/c++/14/bits/stl_algo.h:
 
@@ -2409,9 +2413,9 @@ CMakeFiles/socket_logger.dir/common_lib/importance_level.cpp.o:
 
 /usr/include/sched.h:
 
-/usr/include/x86_64-linux-gnu/bits/setjmp.h:
-
 /usr/include/x86_64-linux-gnu/bits/getopt_posix.h:
+
+/usr/include/x86_64-linux-gnu/bits/setjmp.h:
 
 /usr/include/time.h:
 

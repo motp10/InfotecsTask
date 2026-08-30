@@ -14,6 +14,7 @@ void TestFileLogger() {
 
   {
     FileLogger logger(log_path.string(), ImportanceLevel::kMedium);
+    CHECK(logger.Open() == FileLoggerResult::kOk);
     CHECK(logger.Log("ignored", ImportanceLevel::kLow) == LogResult::kFiltered);
     CHECK(logger.Log("saved", ImportanceLevel::kHigh) == LogResult::kWritten);
     CHECK(logger.SetImportanceLevel(ImportanceLevel::kHigh));

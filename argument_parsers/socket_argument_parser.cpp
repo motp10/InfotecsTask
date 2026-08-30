@@ -1,7 +1,8 @@
 #include "socket_argument_parser.h"
 
+#include <charconv>
 #include <cstdint>
-#include <stdexcept>
+#include <limits>
 #include <string_view>
 
 namespace {
@@ -18,21 +19,22 @@ constexpr std::string_view kLevelOptionLong = "--level";
 constexpr std::string_view kHelpOptionShort = "-?";
 constexpr std::string_view kHelpOptionLong = "--help";
 
-uint16_t ParsePort(const std::string& port_str) {
-  try {
-    const unsigned long port = std::stoul(port_str);
+struct PortParseResult {
+  uint16_t port = 0;
+  bool ok = false;
+};
 
-    if (port == 0 || port > UINT16_MAX) {
-      throw std::invalid_argument(
-          "Port must be between 1 and 65535");
-    }
+PortParseResult ParsePort(const std::string& port_str) {
+  unsigned int port = 0;
+  const auto [end, error] = std::from_chars(
+      port_str.data(), port_str.data() + port_str.size(), port);
 
-    return static_cast<uint16_t>(port);
-
-  } catch (...) {
-    throw std::invalid_argument(
-        "Invalid port: " + port_str);
+  if (error != std::errc{} || end != port_str.data() + port_str.size() ||
+      port == 0 || port > std::numeric_limits<uint16_t>::max()) {
+    return {};
   }
+
+  return {static_cast<uint16_t>(port), true};
 }
 
 }  // namespace
@@ -155,13 +157,13 @@ void SocketArgumentParser::ParsePortOption(int argc, char* argv[], int index) {
     return;
   }
 
-  try {
-    options_.port = ParsePort(argv[index + 1]);
-  } catch (const std::invalid_argument& error) {
-    error_message_ = error.what();
+  const PortParseResult parsed_port = ParsePort(argv[index + 1]);
+  if (!parsed_port.ok) {
+    error_message_ = "Invalid port: " + std::string(argv[index + 1]);
     return;
   }
 
+  options_.port = parsed_port.port;
   has_port_ = true;
 }
 

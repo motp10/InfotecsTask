@@ -35,19 +35,18 @@ LogResult FileLogger::Log(const std::string& message, ImportanceLevel level) {
     return LogResult::kWriteError;
   }
 
-  std::string formatted_message;
+  const FormatResult formatted_message =
+      MessageFormatter::FormatMessage(message, level);
 
-  try {
-    formatted_message = MessageFormatter::FormatMessage(message, level);
-  }
-  catch (const InvalidImportanceLevelError&) {
-    return LogResult::kInvalidLevel;
-  }
-  catch (const TimestampError&) {
+  if (!formatted_message.Ok()) {
+    if (formatted_message.error == FormatError::kInvalidImportanceLevel) {
+      return LogResult::kInvalidLevel;
+    }
+
     return LogResult::kTimestampError;
   }
 
-  log_file_ << formatted_message << '\n';
+  log_file_ << formatted_message.text << '\n';
 
 
   return log_file_ ? LogResult::kWritten : LogResult::kWriteError;

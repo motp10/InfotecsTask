@@ -16,6 +16,11 @@ int main() {
 
   try {
     Server server(kPort);
+    if (server.Start() != ServerResult::kOk) {
+      std::cerr << "Failed to start server\n";
+      return 1;
+    }
+
     MessageDeserializer deserializer;
     Statistics statistics;
     StatisticPrinter printer;
@@ -26,7 +31,13 @@ int main() {
     auto time_to_poll = std::chrono::duration_cast<std::chrono::milliseconds>(kPeriod);
 
     while (true) {
-      const auto data = server.ReceiveMessage(time_to_poll);
+      const ReceiveResult receive_result = server.ReceiveMessage(time_to_poll);
+      if (!receive_result.Ok()) {
+        std::cerr << "Failed to receive message\n";
+        return 1;
+      }
+
+      const auto& data = receive_result.message;
 
       const auto time_from_last_print =
         std::chrono::duration_cast<std::chrono::milliseconds>(
@@ -37,8 +48,13 @@ int main() {
               kPeriod) - time_from_last_print;
 
       if (data.has_value()) {
-        const Message message =
-          deserializer.Deserialize(*data);
+        const DeserializeResult result = deserializer.Deserialize(*data);
+        if (!result.Ok()) {
+          std::cerr << "Received an invalid message\n";
+          continue;
+        }
+
+        const Message& message = result.message;
 
         const auto received_at = CurrentTime();
 

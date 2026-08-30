@@ -9,6 +9,7 @@ public:
     SocketLogger(const std::string& host,
                  uint16_t port,
                  ImportanceLevel default_importance_level);
+    ~SocketLogger();
 
     LogResult Log(const std::string& message,
                   ImportanceLevel level) override;
@@ -16,7 +17,7 @@ public:
     bool SetImportanceLevel(ImportanceLevel new_level) override;
 
 private:
-    void SendAll(const std::string& message);
+    LogResult SendAll(const std::string& message);
     int socket_;
     ImportanceLevel default_importance_level_;
 };

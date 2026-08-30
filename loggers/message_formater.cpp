@@ -1,27 +1,22 @@
-#include <ctime>
-#include <iomanip>
-#include <optional>
-#include <sstream>
-#include <stdexcept>
-
 #include "message_formater.h"
 #include "../common_lib/time_utils.h"
 
-
-std::string MessageFormatter::FormatMessage(const std::string& message,
-                                            ImportanceLevel level) {
-    auto time = CurrentLocalTime();
+FormatResult MessageFormatter::FormatMessage(const std::string& message,
+                                             ImportanceLevel level) {
+    auto time = FormatLocalTime();
 
     if (time.empty()) {
-        throw TimestampError("Failed to get current local time");
+        return {{}, FormatError::kTimestampError};
     }
 
     auto level_str = ImportanceLevelToString(level);
 
     if (!level_str.has_value()) {
-        throw InvalidImportanceLevelError("Invalid importance level");
+        return {{}, FormatError::kInvalidImportanceLevel};
     }
 
-    return "[" + time + "] [" +
-           level_str.value() + "] " + message;
+    return {
+        "[" + time + "] [" + level_str.value() + "] " + message,
+        FormatError::kNone
+    };
 }

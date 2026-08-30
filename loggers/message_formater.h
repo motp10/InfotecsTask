@@ -3,21 +3,23 @@
 #include <string>
 #include "importance_level.h"
 
-#include <stdexcept>
-
-class InvalidImportanceLevelError : public std::runtime_error {
-public:
-    using std::runtime_error::runtime_error;
+enum class FormatError {
+    kNone,
+    kTimestampError,
+    kInvalidImportanceLevel,
 };
 
-class TimestampError : public std::runtime_error {
-public:
-    using std::runtime_error::runtime_error;
+struct FormatResult {
+    std::string text;
+    FormatError error = FormatError::kNone;
+
+    bool Ok() const {
+        return error == FormatError::kNone;
+    }
 };
 
 class MessageFormatter {
 public:
-    static std::string FormatMessage(const std::string& message,
-                                     ImportanceLevel level);        
-
+    static FormatResult FormatMessage(const std::string& message,
+                                      ImportanceLevel level);
 };

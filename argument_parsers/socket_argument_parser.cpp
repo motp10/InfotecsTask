@@ -6,32 +6,17 @@
 
 namespace {
 
-    constexpr std::string_view kHostOptionShort = "-h";
-    constexpr std::string_view kHostOptionLong = "--host";
+constexpr std::string_view kHostOptionShort = "-h";
+constexpr std::string_view kHostOptionLong = "--host";
 
-    constexpr std::string_view kPortOptionShort = "-p";
-    constexpr std::string_view kPortOptionLong = "--port";
+constexpr std::string_view kPortOptionShort = "-p";
+constexpr std::string_view kPortOptionLong = "--port";
 
-    constexpr std::string_view kLevelOptionShort = "-l";
-    constexpr std::string_view kLevelOptionLong = "--level";
+constexpr std::string_view kLevelOptionShort = "-l";
+constexpr std::string_view kLevelOptionLong = "--level";
 
-    constexpr std::string_view kHelpOptionShort = "-?";
-    constexpr std::string_view kHelpOptionLong = "--help";
-
-    ImportanceLevel ParseImportanceLevel(
-        const std::string& level_str) {
-
-    if (level_str == "low") {
-        return ImportanceLevel::kLow;
-    } else if (level_str == "medium") {
-        return ImportanceLevel::kMedium;
-    } else if (level_str == "high") {
-        return ImportanceLevel::kHigh;
-    }
-
-    throw std::invalid_argument(
-        "Invalid importance level: " + level_str);
-}
+constexpr std::string_view kHelpOptionShort = "-?";
+constexpr std::string_view kHelpOptionLong = "--help";
 
 uint16_t ParsePort(const std::string& port_str) {
   try {
@@ -56,9 +41,9 @@ ParseResult SocketArgumentParser::ParseCommandLineArguments(int argc, char* argv
   options_ = ConsoleOptions{};
   error_message_.clear();
   program_name_ = argc > 0 ? argv[0] : "logger_app";
-  bool has_level_ = false;
-  bool has_host_ = false;
-  bool has_port_ = false; 
+  has_level_ = false;
+  has_host_ = false;
+  has_port_ = false;
 
   for (int index = 1; index < argc; ++index) {
     const std::string_view argument(argv[index]);

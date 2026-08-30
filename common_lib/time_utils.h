@@ -1,3 +1,6 @@
+#pragma once
+
+#include <chrono>
 #include <string>
 
 std::chrono::system_clock::time_point CurrentTime();

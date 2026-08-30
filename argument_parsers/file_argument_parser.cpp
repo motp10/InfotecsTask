@@ -10,18 +10,6 @@ namespace {
   constexpr std::string_view kLevelOptionLong = "--level";
   constexpr std::string_view kHelpOptionShort = "-h";
   constexpr std::string_view kHelpOptionLong = "--help";
-
-  ImportanceLevel ParseImportanceLevel(const std::string& level_str) {
-    if (level_str == "low") {
-      return ImportanceLevel::kLow;
-    } else if (level_str == "medium") {
-      return ImportanceLevel::kMedium;
-    } else if (level_str == "high") {
-      return ImportanceLevel::kHigh;
-    } else {
-      throw std::invalid_argument("Invalid importance level: " + level_str);
-    }
-  }
 }  // namespace
 
 ParseResult FileArgumentParser::ParseCommandLineArguments(int argc, char* argv[]) {

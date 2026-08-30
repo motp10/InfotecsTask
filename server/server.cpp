@@ -13,7 +13,12 @@
 Server::Server(uint16_t port)
     : port_(port)
     , server_socket_(-1)
-    , client_socket_(-1) {
+    , client_socket_(-1) {}
+
+ServerResult Server::Start() {
+  if (server_socket_ != -1) {
+    return ServerResult::kAlreadyStarted;
+  }
 
   server_socket_ = socket(
       AF_INET,
@@ -21,9 +26,7 @@ Server::Server(uint16_t port)
       0);
 
   if (server_socket_ == -1) {
-    throw std::runtime_error(
-        "Failed to create server socket: " +
-        std::string(std::strerror(errno)));
+    return ServerResult::kSocketError;
   }
 
   int reuse_address = 1;
@@ -37,9 +40,7 @@ Server::Server(uint16_t port)
     close(server_socket_);
     server_socket_ = -1;
 
-    throw std::runtime_error(
-        "Failed to set socket options: " +
-        std::string(std::strerror(errno)));
+    return ServerResult::kSetOptionError;
   }
 
   sockaddr_in server_address{};
@@ -56,9 +57,7 @@ Server::Server(uint16_t port)
     close(server_socket_);
     server_socket_ = -1;
 
-    throw std::runtime_error(
-        "Failed to bind server socket: " +
-        std::string(std::strerror(errno)));
+    return ServerResult::kBindError;
   }
 
   constexpr int kBacklog = 1;
@@ -67,11 +66,10 @@ Server::Server(uint16_t port)
     close(server_socket_);
     server_socket_ = -1;
 
-    throw std::runtime_error(
-        "Failed to listen on port " +
-        std::to_string(port_) + ": " +
-        std::string(std::strerror(errno)));
+    return ServerResult::kListenError;
   }
+
+  return ServerResult::kOk;
 }
 
 void Server::AcceptClient() {
@@ -96,7 +94,7 @@ Server::~Server() {
     }
 }
 
-std::optional<std::string> Server::ReceiveMessage(std::chrono::milliseconds timeout) {
+ReceiveResult Server::ReceiveMessage(std::chrono::milliseconds timeout) {
 
   const std::size_t message_end = receive_buffer_.find('\n');
 
@@ -105,7 +103,7 @@ std::optional<std::string> Server::ReceiveMessage(std::chrono::milliseconds time
 
     receive_buffer_.erase(0, message_end + 1);
 
-    return message;
+    return {message, ServerResult::kOk};
   }
 
   pollfd poll_fd{};
@@ -121,21 +119,19 @@ std::optional<std::string> Server::ReceiveMessage(std::chrono::milliseconds time
       timeout_ms);
 
   if (result == -1) {
-    throw std::runtime_error(
-        "Failed to poll socket: " +
-        std::string(std::strerror(errno)));
+    return {{}, ServerResult::kPollError};
   }
 
   if (result == 0) {
-    return std::nullopt;
+    return {{}, ServerResult::kOk};
   }
 
   if (poll_fd.revents & (POLLERR | POLLNVAL)) {
-    throw std::runtime_error("Socket error occurred");
+    return {{}, ServerResult::kConnectionError};
   }
 
   if (poll_fd.revents & POLLHUP) {
-    throw std::runtime_error("Client closed the connection");
+    return {{}, ServerResult::kConnectionClosed};
   }
 
   if (poll_fd.revents & POLLIN) {
@@ -150,12 +146,11 @@ std::optional<std::string> Server::ReceiveMessage(std::chrono::milliseconds time
         0);
 
     if (bytes_received == -1) {
-      throw std::runtime_error("Failed to receive message: " +
-                                std::string(std::strerror(errno)));
+      return {{}, ServerResult::kReceiveError};
     }
 
     if (bytes_received == 0) {
-      throw std::runtime_error("Client closed the connection");
+      return {{}, ServerResult::kConnectionClosed};
     }
 
     receive_buffer_.append(buffer, bytes_received);
@@ -167,9 +162,9 @@ std::optional<std::string> Server::ReceiveMessage(std::chrono::milliseconds time
 
       receive_buffer_.erase(0, message_end + 1);
 
-      return message;
+      return {message, ServerResult::kOk};
     }
   }
 
-  return std::nullopt;
+  return {{}, ServerResult::kOk};
 }

@@ -1,5 +1,7 @@
 #include <deque>
 #include <chrono>
+#pragma once
+
 #include <array>
 
 #include "importance_level.h"

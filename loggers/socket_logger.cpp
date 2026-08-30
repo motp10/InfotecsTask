@@ -1,5 +1,3 @@
-#include <cerrno>
-#include <cstring>
 #include <iomanip>
 #include <netdb.h>
 #include <sstream>
@@ -80,11 +78,17 @@ LogResult SocketLogger::Log(
         return LogResult::kFiltered;
     }
 
-    const std::string formatted_message = MessageFormatter::FormatMessage(message, level);
+    const FormatResult formatted_message = MessageFormatter::FormatMessage(message, level);
 
-    SendAll(formatted_message);
+    if (!formatted_message.Ok()) {
+        if (formatted_message.error == FormatError::kInvalidImportanceLevel) {
+            return LogResult::kInvalidLevel;
+        }
 
-    return LogResult::kWritten;
+        return LogResult::kTimestampError;
+    }
+
+    return SendAll(formatted_message.text);
 }
 
 bool SocketLogger::SetImportanceLevel(
@@ -95,7 +99,7 @@ bool SocketLogger::SetImportanceLevel(
     return true;
 }
 
-void SocketLogger::SendAll(const std::string& data) {
+LogResult SocketLogger::SendAll(const std::string& data) {
     std::size_t total_sent = 0;
 
     while (total_sent < data.size()) {
@@ -105,17 +109,12 @@ void SocketLogger::SendAll(const std::string& data) {
             data.size() - total_sent,
             MSG_NOSIGNAL);
 
-        if (bytes_sent == -1) {
-            throw std::runtime_error(
-                "Failed to send log message: " +
-                std::string(std::strerror(errno)));
-        }
-
-        if (bytes_sent == 0) {
-            throw std::runtime_error(
-                "Socket connection was closed");
+        if (bytes_sent <= 0) {
+            return LogResult::kWriteError;
         }
 
         total_sent += static_cast<std::size_t>(bytes_sent);
     }
+
+    return LogResult::kWritten;
 }

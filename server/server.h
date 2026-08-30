@@ -3,11 +3,35 @@
 #include <cstdint>
 #include <optional>
 #include <chrono>
+
+enum class ServerResult {
+    kOk,
+    kAlreadyStarted,
+    kSocketError,
+    kSetOptionError,
+    kBindError,
+    kListenError,
+    kPollError,
+    kConnectionError,
+    kConnectionClosed,
+    kReceiveError,
+};
+
+struct ReceiveResult {
+    std::optional<std::string> message;
+    ServerResult result = ServerResult::kOk;
+
+    bool Ok() const {
+        return result == ServerResult::kOk;
+    }
+};
+
 class Server {
 public:
     Server(uint16_t port);
     ~Server();
-    std::optional<std::string> ReceiveMessage(std::chrono::milliseconds timeout);
+    ServerResult Start();
+    ReceiveResult ReceiveMessage(std::chrono::milliseconds timeout);
     void AcceptClient();
     
 private:

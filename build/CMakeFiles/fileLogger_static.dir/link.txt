@@ -1,0 +1,2 @@
+/usr/bin/ar qc libfileLogger.a CMakeFiles/fileLogger_static.dir/loggers/file_logger.cpp.o CMakeFiles/fileLogger_static.dir/common_lib/importance_level.cpp.o CMakeFiles/fileLogger_static.dir/common_lib/time_utils.cpp.o CMakeFiles/fileLogger_static.dir/loggers/message_formater.cpp.o
+/usr/bin/ranlib libfileLogger.a

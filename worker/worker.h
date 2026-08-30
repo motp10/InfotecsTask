@@ -1,15 +1,15 @@
 #pragma once
 #include "../messages/message_queue.h"
-#include "../logger/logger.h"
+#include "../loggers/i_logger.h"
 
 class Worker {
 public:
-  Worker(MessageQueue& queue, FileLogger& logger)
+  Worker(MessageQueue& queue, ILogger& logger)
       : queue_(queue), logger_(logger) {}
 
   void Run();
 
 private:
   MessageQueue& queue_;
-  FileLogger& logger_;
+  ILogger& logger_;
 };

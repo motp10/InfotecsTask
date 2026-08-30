@@ -1,0 +1,42 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/unit_tests.dir/link.d"
+  "CMakeFiles/unit_tests.dir/__/__/argument_parsers/file_argument_parser.cpp.o"
+  "CMakeFiles/unit_tests.dir/__/__/argument_parsers/file_argument_parser.cpp.o.d"
+  "CMakeFiles/unit_tests.dir/__/__/argument_parsers/socket_argument_parser.cpp.o"
+  "CMakeFiles/unit_tests.dir/__/__/argument_parsers/socket_argument_parser.cpp.o.d"
+  "CMakeFiles/unit_tests.dir/__/__/argument_parsers/statistic_argument_parser.cpp.o"
+  "CMakeFiles/unit_tests.dir/__/__/argument_parsers/statistic_argument_parser.cpp.o.d"
+  "CMakeFiles/unit_tests.dir/__/__/common_lib/importance_level.cpp.o"
+  "CMakeFiles/unit_tests.dir/__/__/common_lib/importance_level.cpp.o.d"
+  "CMakeFiles/unit_tests.dir/__/__/common_lib/time_utils.cpp.o"
+  "CMakeFiles/unit_tests.dir/__/__/common_lib/time_utils.cpp.o.d"
+  "CMakeFiles/unit_tests.dir/__/__/message_deserializer/message_deserializer.cpp.o"
+  "CMakeFiles/unit_tests.dir/__/__/message_deserializer/message_deserializer.cpp.o.d"
+  "CMakeFiles/unit_tests.dir/__/__/message_parser/message_parser.cpp.o"
+  "CMakeFiles/unit_tests.dir/__/__/message_parser/message_parser.cpp.o.d"
+  "CMakeFiles/unit_tests.dir/__/__/messages/message_queue.cpp.o"
+  "CMakeFiles/unit_tests.dir/__/__/messages/message_queue.cpp.o.d"
+  "CMakeFiles/unit_tests.dir/__/__/statistics/statistics.cpp.o"
+  "CMakeFiles/unit_tests.dir/__/__/statistics/statistics.cpp.o.d"
+  "CMakeFiles/unit_tests.dir/argument_parsers_test.cpp.o"
+  "CMakeFiles/unit_tests.dir/argument_parsers_test.cpp.o.d"
+  "CMakeFiles/unit_tests.dir/file_logger_test.cpp.o"
+  "CMakeFiles/unit_tests.dir/file_logger_test.cpp.o.d"
+  "CMakeFiles/unit_tests.dir/message_deserializer_test.cpp.o"
+  "CMakeFiles/unit_tests.dir/message_deserializer_test.cpp.o.d"
+  "CMakeFiles/unit_tests.dir/message_parser_test.cpp.o"
+  "CMakeFiles/unit_tests.dir/message_parser_test.cpp.o.d"
+  "CMakeFiles/unit_tests.dir/message_queue_test.cpp.o"
+  "CMakeFiles/unit_tests.dir/message_queue_test.cpp.o.d"
+  "CMakeFiles/unit_tests.dir/statistics_test.cpp.o"
+  "CMakeFiles/unit_tests.dir/statistics_test.cpp.o.d"
+  "CMakeFiles/unit_tests.dir/unit_tests.cpp.o"
+  "CMakeFiles/unit_tests.dir/unit_tests.cpp.o.d"
+  "unit_tests"
+  "unit_tests.pdb"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/unit_tests.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/matev/Documents/Infotexs/argument_parsers/statistic_argument_parser.cpp" "CMakeFiles/statistic_app.dir/argument_parsers/statistic_argument_parser.cpp.o" "gcc" "CMakeFiles/statistic_app.dir/argument_parsers/statistic_argument_parser.cpp.o.d"
   "/home/matev/Documents/Infotexs/common_lib/importance_level.cpp" "CMakeFiles/statistic_app.dir/common_lib/importance_level.cpp.o" "gcc" "CMakeFiles/statistic_app.dir/common_lib/importance_level.cpp.o.d"
   "/home/matev/Documents/Infotexs/common_lib/time_utils.cpp" "CMakeFiles/statistic_app.dir/common_lib/time_utils.cpp.o" "gcc" "CMakeFiles/statistic_app.dir/common_lib/time_utils.cpp.o.d"
   "/home/matev/Documents/Infotexs/message_deserializer/message_deserializer.cpp" "CMakeFiles/statistic_app.dir/message_deserializer/message_deserializer.cpp.o" "gcc" "CMakeFiles/statistic_app.dir/message_deserializer/message_deserializer.cpp.o.d"

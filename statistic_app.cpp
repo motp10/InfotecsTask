@@ -2,17 +2,30 @@
 #include <cstddef>
 #include <iostream>
 
+#include "argument_parsers/statistic_argument_parser.h"
 #include "server/server.h"
 #include "statistics/statistics.h"
 #include "statistics/statistics_printer.h"
 #include "common_lib/time_utils.h"
 #include "message_deserializer/message_deserializer.h"
 
-int main() {
+int main(int argc, char* argv[]) {
   constexpr uint16_t kPort = 8080;
-  constexpr std::size_t kMessagesToShow = 10;
-  constexpr auto kPeriod = std::chrono::seconds(5);
-  
+
+  StatisticArgumentParser argument_parser;
+  const ParseResult parse_result = argument_parser.ParseCommandLineArguments(argc, argv);
+
+  if (parse_result == ParseResult::kHelpRequested) {
+    std::cout << StatisticArgumentParser::HelpText();
+    return 0;
+  }
+  if (parse_result != ParseResult::kOk) {
+    std::cerr << argument_parser.ErrorMessage() << '\n';
+    return 1;
+  }
+
+  const std::size_t messages_to_show = argument_parser.Options().messages_to_show;
+  const auto period = std::chrono::seconds(argument_parser.Options().period_seconds);
 
   try {
     Server server(kPort);
@@ -26,11 +39,16 @@ int main() {
     StatisticPrinter printer;
     server.AcceptClient();
 
-    auto last_print_time = CurrentTime();
     std::size_t messages_since_print = 0;
-    auto time_to_poll = std::chrono::duration_cast<std::chrono::milliseconds>(kPeriod);
+    auto next_print_time = std::chrono::steady_clock::now() + period;
 
     while (true) {
+      const auto now = std::chrono::steady_clock::now();
+      const auto time_to_poll = now < next_print_time
+          ? std::chrono::duration_cast<std::chrono::milliseconds>(
+                next_print_time - now)
+          : std::chrono::milliseconds(0);
+
       const ReceiveResult receive_result = server.ReceiveMessage(time_to_poll);
       if (!receive_result.Ok()) {
         std::cerr << "Failed to receive message\n";
@@ -39,45 +57,29 @@ int main() {
 
       const auto& data = receive_result.message;
 
-      const auto time_from_last_print =
-        std::chrono::duration_cast<std::chrono::milliseconds>(
-          CurrentTime() - last_print_time);
-
-      time_to_poll =
-        std::chrono::duration_cast<std::chrono::milliseconds>(
-              kPeriod) - time_from_last_print;
-
       if (data.has_value()) {
         const DeserializeResult result = deserializer.Deserialize(*data);
         if (!result.Ok()) {
           std::cerr << "Received an invalid message\n";
-          continue;
+        } else {
+          const Message& message = result.message;
+          const auto received_at = CurrentTime();
+
+          statistics.AddMessage(
+              message.text.size(),
+              message.level,
+              received_at);
+
+          ++messages_since_print;
         }
+      }
 
-        const Message& message = result.message;
-
-        const auto received_at = CurrentTime();
-
-        statistics.AddMessage(
-            message.text.size(),
-            message.level,
-            received_at);
-
-        ++messages_since_print;
-
-        if (messages_since_print >= kMessagesToShow) {
-            printer.Print(statistics);
-
-            messages_since_print = 0;
-        }
-      } else {
-        const auto now = CurrentTime();
-
-        if (time_to_poll <= std::chrono::milliseconds(0)) {
-          printer.Print(statistics);
-
-          last_print_time = now;
-        }
+      const auto current_time = std::chrono::steady_clock::now();
+      if (messages_since_print >= messages_to_show ||
+          current_time >= next_print_time) {
+        printer.Print(statistics);
+        messages_since_print = 0;
+        next_print_time = current_time + period;
       }
     }
 

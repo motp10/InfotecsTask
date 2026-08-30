@@ -1171,12 +1171,12 @@ CMakeFiles/socket_logger.dir/clean:
 CMakeFiles/statistic_app.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/statistic_app.dir/build.make CMakeFiles/statistic_app.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/statistic_app.dir/build.make CMakeFiles/statistic_app.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/matev/Documents/Infotexs/build/CMakeFiles --progress-num=27,28,29,30,31,32,33,34 "Built target statistic_app"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/matev/Documents/Infotexs/build/CMakeFiles --progress-num=27,28,29,30,31,32,33,34,35 "Built target statistic_app"
 .PHONY : CMakeFiles/statistic_app.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/statistic_app.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/matev/Documents/Infotexs/build/CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/matev/Documents/Infotexs/build/CMakeFiles 9
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/statistic_app.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/matev/Documents/Infotexs/build/CMakeFiles 0
 .PHONY : CMakeFiles/statistic_app.dir/rule
@@ -1188,7 +1188,7 @@ statistic_app: CMakeFiles/statistic_app.dir/rule
 # codegen rule for target.
 CMakeFiles/statistic_app.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/statistic_app.dir/build.make CMakeFiles/statistic_app.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/matev/Documents/Infotexs/build/CMakeFiles --progress-num=27,28,29,30,31,32,33,34 "Finished codegen for target statistic_app"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/matev/Documents/Infotexs/build/CMakeFiles --progress-num=27,28,29,30,31,32,33,34,35 "Finished codegen for target statistic_app"
 .PHONY : CMakeFiles/statistic_app.dir/codegen
 
 # clean rule for target.
@@ -1203,12 +1203,12 @@ CMakeFiles/statistic_app.dir/clean:
 tests/unit/CMakeFiles/unit_tests.dir/all: CMakeFiles/fileLogger_static.dir/all
 	$(MAKE) $(MAKESILENT) -f tests/unit/CMakeFiles/unit_tests.dir/build.make tests/unit/CMakeFiles/unit_tests.dir/depend
 	$(MAKE) $(MAKESILENT) -f tests/unit/CMakeFiles/unit_tests.dir/build.make tests/unit/CMakeFiles/unit_tests.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/matev/Documents/Infotexs/build/CMakeFiles --progress-num=35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50 "Built target unit_tests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/matev/Documents/Infotexs/build/CMakeFiles --progress-num=36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52 "Built target unit_tests"
 .PHONY : tests/unit/CMakeFiles/unit_tests.dir/all
 
 # Build rule for subdir invocation for target.
 tests/unit/CMakeFiles/unit_tests.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/matev/Documents/Infotexs/build/CMakeFiles 21
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/matev/Documents/Infotexs/build/CMakeFiles 22
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/unit/CMakeFiles/unit_tests.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/matev/Documents/Infotexs/build/CMakeFiles 0
 .PHONY : tests/unit/CMakeFiles/unit_tests.dir/rule
@@ -1220,7 +1220,7 @@ unit_tests: tests/unit/CMakeFiles/unit_tests.dir/rule
 # codegen rule for target.
 tests/unit/CMakeFiles/unit_tests.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f tests/unit/CMakeFiles/unit_tests.dir/build.make tests/unit/CMakeFiles/unit_tests.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/matev/Documents/Infotexs/build/CMakeFiles --progress-num=35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50 "Finished codegen for target unit_tests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/matev/Documents/Infotexs/build/CMakeFiles --progress-num=36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52 "Finished codegen for target unit_tests"
 .PHONY : tests/unit/CMakeFiles/unit_tests.dir/codegen
 
 # clean rule for target.

@@ -15,7 +15,6 @@ set(COMMON_LOGGER_SOURCES
     loggers/message_formater.cpp
 )
 
-# Both targets are built: libfileLogger.a and libfileLogger.so.
 add_library(fileLogger_static STATIC
     loggers/file_logger.cpp
     ${COMMON_LOGGER_SOURCES}
@@ -62,6 +61,7 @@ target_link_libraries(socket_logger PRIVATE Threads::Threads)
 
 add_executable(statistic_app
     statistic_app.cpp
+    argument_parsers/statistic_argument_parser.cpp
     server/server.cpp
     message_deserializer/message_deserializer.cpp
     statistics/statistics.cpp

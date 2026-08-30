@@ -616,6 +616,30 @@ argument_parsers/socket_argument_parser.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/socket_logger.dir/build.make CMakeFiles/socket_logger.dir/argument_parsers/socket_argument_parser.cpp.s
 .PHONY : argument_parsers/socket_argument_parser.cpp.s
 
+argument_parsers/statistic_argument_parser.o: argument_parsers/statistic_argument_parser.cpp.o
+.PHONY : argument_parsers/statistic_argument_parser.o
+
+# target to build an object file
+argument_parsers/statistic_argument_parser.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/statistic_app.dir/build.make CMakeFiles/statistic_app.dir/argument_parsers/statistic_argument_parser.cpp.o
+.PHONY : argument_parsers/statistic_argument_parser.cpp.o
+
+argument_parsers/statistic_argument_parser.i: argument_parsers/statistic_argument_parser.cpp.i
+.PHONY : argument_parsers/statistic_argument_parser.i
+
+# target to preprocess a source file
+argument_parsers/statistic_argument_parser.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/statistic_app.dir/build.make CMakeFiles/statistic_app.dir/argument_parsers/statistic_argument_parser.cpp.i
+.PHONY : argument_parsers/statistic_argument_parser.cpp.i
+
+argument_parsers/statistic_argument_parser.s: argument_parsers/statistic_argument_parser.cpp.s
+.PHONY : argument_parsers/statistic_argument_parser.s
+
+# target to generate assembly for a file
+argument_parsers/statistic_argument_parser.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/statistic_app.dir/build.make CMakeFiles/statistic_app.dir/argument_parsers/statistic_argument_parser.cpp.s
+.PHONY : argument_parsers/statistic_argument_parser.cpp.s
+
 common_lib/importance_level.o: common_lib/importance_level.cpp.o
 .PHONY : common_lib/importance_level.o
 
@@ -1061,6 +1085,9 @@ help:
 	@echo "... argument_parsers/socket_argument_parser.o"
 	@echo "... argument_parsers/socket_argument_parser.i"
 	@echo "... argument_parsers/socket_argument_parser.s"
+	@echo "... argument_parsers/statistic_argument_parser.o"
+	@echo "... argument_parsers/statistic_argument_parser.i"
+	@echo "... argument_parsers/statistic_argument_parser.s"
 	@echo "... common_lib/importance_level.o"
 	@echo "... common_lib/importance_level.i"
 	@echo "... common_lib/importance_level.s"

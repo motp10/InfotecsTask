@@ -1,5 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/statistic_app.dir/link.d"
+  "CMakeFiles/statistic_app.dir/argument_parsers/statistic_argument_parser.cpp.o"
+  "CMakeFiles/statistic_app.dir/argument_parsers/statistic_argument_parser.cpp.o.d"
   "CMakeFiles/statistic_app.dir/common_lib/importance_level.cpp.o"
   "CMakeFiles/statistic_app.dir/common_lib/importance_level.cpp.o.d"
   "CMakeFiles/statistic_app.dir/common_lib/time_utils.cpp.o"

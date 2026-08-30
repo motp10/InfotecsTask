@@ -4,6 +4,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/unit_tests.dir/__/__/argument_parsers/file_argument_parser.cpp.o.d"
   "CMakeFiles/unit_tests.dir/__/__/argument_parsers/socket_argument_parser.cpp.o"
   "CMakeFiles/unit_tests.dir/__/__/argument_parsers/socket_argument_parser.cpp.o.d"
+  "CMakeFiles/unit_tests.dir/__/__/argument_parsers/statistic_argument_parser.cpp.o"
+  "CMakeFiles/unit_tests.dir/__/__/argument_parsers/statistic_argument_parser.cpp.o.d"
   "CMakeFiles/unit_tests.dir/__/__/common_lib/importance_level.cpp.o"
   "CMakeFiles/unit_tests.dir/__/__/common_lib/importance_level.cpp.o.d"
   "CMakeFiles/unit_tests.dir/__/__/common_lib/time_utils.cpp.o"

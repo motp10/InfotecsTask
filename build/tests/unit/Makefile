@@ -188,6 +188,30 @@ __/__/argument_parsers/socket_argument_parser.cpp.s:
 	cd /home/matev/Documents/Infotexs/build && $(MAKE) $(MAKESILENT) -f tests/unit/CMakeFiles/unit_tests.dir/build.make tests/unit/CMakeFiles/unit_tests.dir/__/__/argument_parsers/socket_argument_parser.cpp.s
 .PHONY : __/__/argument_parsers/socket_argument_parser.cpp.s
 
+__/__/argument_parsers/statistic_argument_parser.o: __/__/argument_parsers/statistic_argument_parser.cpp.o
+.PHONY : __/__/argument_parsers/statistic_argument_parser.o
+
+# target to build an object file
+__/__/argument_parsers/statistic_argument_parser.cpp.o:
+	cd /home/matev/Documents/Infotexs/build && $(MAKE) $(MAKESILENT) -f tests/unit/CMakeFiles/unit_tests.dir/build.make tests/unit/CMakeFiles/unit_tests.dir/__/__/argument_parsers/statistic_argument_parser.cpp.o
+.PHONY : __/__/argument_parsers/statistic_argument_parser.cpp.o
+
+__/__/argument_parsers/statistic_argument_parser.i: __/__/argument_parsers/statistic_argument_parser.cpp.i
+.PHONY : __/__/argument_parsers/statistic_argument_parser.i
+
+# target to preprocess a source file
+__/__/argument_parsers/statistic_argument_parser.cpp.i:
+	cd /home/matev/Documents/Infotexs/build && $(MAKE) $(MAKESILENT) -f tests/unit/CMakeFiles/unit_tests.dir/build.make tests/unit/CMakeFiles/unit_tests.dir/__/__/argument_parsers/statistic_argument_parser.cpp.i
+.PHONY : __/__/argument_parsers/statistic_argument_parser.cpp.i
+
+__/__/argument_parsers/statistic_argument_parser.s: __/__/argument_parsers/statistic_argument_parser.cpp.s
+.PHONY : __/__/argument_parsers/statistic_argument_parser.s
+
+# target to generate assembly for a file
+__/__/argument_parsers/statistic_argument_parser.cpp.s:
+	cd /home/matev/Documents/Infotexs/build && $(MAKE) $(MAKESILENT) -f tests/unit/CMakeFiles/unit_tests.dir/build.make tests/unit/CMakeFiles/unit_tests.dir/__/__/argument_parsers/statistic_argument_parser.cpp.s
+.PHONY : __/__/argument_parsers/statistic_argument_parser.cpp.s
+
 __/__/common_lib/importance_level.o: __/__/common_lib/importance_level.cpp.o
 .PHONY : __/__/common_lib/importance_level.o
 
@@ -516,6 +540,9 @@ help:
 	@echo "... __/__/argument_parsers/socket_argument_parser.o"
 	@echo "... __/__/argument_parsers/socket_argument_parser.i"
 	@echo "... __/__/argument_parsers/socket_argument_parser.s"
+	@echo "... __/__/argument_parsers/statistic_argument_parser.o"
+	@echo "... __/__/argument_parsers/statistic_argument_parser.i"
+	@echo "... __/__/argument_parsers/statistic_argument_parser.s"
 	@echo "... __/__/common_lib/importance_level.o"
 	@echo "... __/__/common_lib/importance_level.i"
 	@echo "... __/__/common_lib/importance_level.s"

@@ -107,7 +107,7 @@ LogResult SocketLogger::Log(
         return LogResult::kTimestampError;
     }
 
-    return SendAll(formatted_message.text);
+    return SendAll(formatted_message.text + '\n');
 }
 
 bool SocketLogger::SetImportanceLevel(

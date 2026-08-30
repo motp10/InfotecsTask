@@ -1,8 +1,8 @@
 unit_tests 5 0.000454497
-unit_argument_parsers 13 0.000165846
-unit_message_deserializer 13 0.000140918
-unit_message_parser 13 0.000143974
-unit_message_queue 13 0.000981511
-unit_statistics 13 0.000309341
-unit_file_logger 11 0.000225716
+unit_argument_parsers 16 0.000109412
+unit_message_deserializer 16 0.00013471
+unit_message_parser 17 0.000124618
+unit_message_queue 16 0.000787857
+unit_statistics 16 0.000143544
+unit_file_logger 14 0.000132267
 ---

@@ -8,6 +8,7 @@ add_executable(unit_tests
     statistics_test.cpp
     ${PROJECT_SOURCE_DIR}/argument_parsers/file_argument_parser.cpp
     ${PROJECT_SOURCE_DIR}/argument_parsers/socket_argument_parser.cpp
+    ${PROJECT_SOURCE_DIR}/argument_parsers/statistic_argument_parser.cpp
     ${PROJECT_SOURCE_DIR}/message_deserializer/message_deserializer.cpp
     ${PROJECT_SOURCE_DIR}/message_parser/message_parser.cpp
     ${PROJECT_SOURCE_DIR}/messages/message_queue.cpp

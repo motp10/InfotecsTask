@@ -198,10 +198,24 @@ tests/unit/CMakeFiles/unit_tests.dir/__/__/argument_parsers/socket_argument_pars
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/unit_tests.dir/__/__/argument_parsers/socket_argument_parser.cpp.s"
 	cd /home/matev/Documents/Infotexs/build/tests/unit && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/matev/Documents/Infotexs/argument_parsers/socket_argument_parser.cpp -o CMakeFiles/unit_tests.dir/__/__/argument_parsers/socket_argument_parser.cpp.s
 
+tests/unit/CMakeFiles/unit_tests.dir/__/__/argument_parsers/statistic_argument_parser.cpp.o: tests/unit/CMakeFiles/unit_tests.dir/flags.make
+tests/unit/CMakeFiles/unit_tests.dir/__/__/argument_parsers/statistic_argument_parser.cpp.o: /home/matev/Documents/Infotexs/argument_parsers/statistic_argument_parser.cpp
+tests/unit/CMakeFiles/unit_tests.dir/__/__/argument_parsers/statistic_argument_parser.cpp.o: tests/unit/CMakeFiles/unit_tests.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/matev/Documents/Infotexs/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object tests/unit/CMakeFiles/unit_tests.dir/__/__/argument_parsers/statistic_argument_parser.cpp.o"
+	cd /home/matev/Documents/Infotexs/build/tests/unit && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/unit/CMakeFiles/unit_tests.dir/__/__/argument_parsers/statistic_argument_parser.cpp.o -MF CMakeFiles/unit_tests.dir/__/__/argument_parsers/statistic_argument_parser.cpp.o.d -o CMakeFiles/unit_tests.dir/__/__/argument_parsers/statistic_argument_parser.cpp.o -c /home/matev/Documents/Infotexs/argument_parsers/statistic_argument_parser.cpp
+
+tests/unit/CMakeFiles/unit_tests.dir/__/__/argument_parsers/statistic_argument_parser.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/unit_tests.dir/__/__/argument_parsers/statistic_argument_parser.cpp.i"
+	cd /home/matev/Documents/Infotexs/build/tests/unit && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/matev/Documents/Infotexs/argument_parsers/statistic_argument_parser.cpp > CMakeFiles/unit_tests.dir/__/__/argument_parsers/statistic_argument_parser.cpp.i
+
+tests/unit/CMakeFiles/unit_tests.dir/__/__/argument_parsers/statistic_argument_parser.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/unit_tests.dir/__/__/argument_parsers/statistic_argument_parser.cpp.s"
+	cd /home/matev/Documents/Infotexs/build/tests/unit && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/matev/Documents/Infotexs/argument_parsers/statistic_argument_parser.cpp -o CMakeFiles/unit_tests.dir/__/__/argument_parsers/statistic_argument_parser.cpp.s
+
 tests/unit/CMakeFiles/unit_tests.dir/__/__/message_deserializer/message_deserializer.cpp.o: tests/unit/CMakeFiles/unit_tests.dir/flags.make
 tests/unit/CMakeFiles/unit_tests.dir/__/__/message_deserializer/message_deserializer.cpp.o: /home/matev/Documents/Infotexs/message_deserializer/message_deserializer.cpp
 tests/unit/CMakeFiles/unit_tests.dir/__/__/message_deserializer/message_deserializer.cpp.o: tests/unit/CMakeFiles/unit_tests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/matev/Documents/Infotexs/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object tests/unit/CMakeFiles/unit_tests.dir/__/__/message_deserializer/message_deserializer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/matev/Documents/Infotexs/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object tests/unit/CMakeFiles/unit_tests.dir/__/__/message_deserializer/message_deserializer.cpp.o"
 	cd /home/matev/Documents/Infotexs/build/tests/unit && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/unit/CMakeFiles/unit_tests.dir/__/__/message_deserializer/message_deserializer.cpp.o -MF CMakeFiles/unit_tests.dir/__/__/message_deserializer/message_deserializer.cpp.o.d -o CMakeFiles/unit_tests.dir/__/__/message_deserializer/message_deserializer.cpp.o -c /home/matev/Documents/Infotexs/message_deserializer/message_deserializer.cpp
 
 tests/unit/CMakeFiles/unit_tests.dir/__/__/message_deserializer/message_deserializer.cpp.i: cmake_force
@@ -215,7 +229,7 @@ tests/unit/CMakeFiles/unit_tests.dir/__/__/message_deserializer/message_deserial
 tests/unit/CMakeFiles/unit_tests.dir/__/__/message_parser/message_parser.cpp.o: tests/unit/CMakeFiles/unit_tests.dir/flags.make
 tests/unit/CMakeFiles/unit_tests.dir/__/__/message_parser/message_parser.cpp.o: /home/matev/Documents/Infotexs/message_parser/message_parser.cpp
 tests/unit/CMakeFiles/unit_tests.dir/__/__/message_parser/message_parser.cpp.o: tests/unit/CMakeFiles/unit_tests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/matev/Documents/Infotexs/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object tests/unit/CMakeFiles/unit_tests.dir/__/__/message_parser/message_parser.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/matev/Documents/Infotexs/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object tests/unit/CMakeFiles/unit_tests.dir/__/__/message_parser/message_parser.cpp.o"
 	cd /home/matev/Documents/Infotexs/build/tests/unit && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/unit/CMakeFiles/unit_tests.dir/__/__/message_parser/message_parser.cpp.o -MF CMakeFiles/unit_tests.dir/__/__/message_parser/message_parser.cpp.o.d -o CMakeFiles/unit_tests.dir/__/__/message_parser/message_parser.cpp.o -c /home/matev/Documents/Infotexs/message_parser/message_parser.cpp
 
 tests/unit/CMakeFiles/unit_tests.dir/__/__/message_parser/message_parser.cpp.i: cmake_force
@@ -229,7 +243,7 @@ tests/unit/CMakeFiles/unit_tests.dir/__/__/message_parser/message_parser.cpp.s: 
 tests/unit/CMakeFiles/unit_tests.dir/__/__/messages/message_queue.cpp.o: tests/unit/CMakeFiles/unit_tests.dir/flags.make
 tests/unit/CMakeFiles/unit_tests.dir/__/__/messages/message_queue.cpp.o: /home/matev/Documents/Infotexs/messages/message_queue.cpp
 tests/unit/CMakeFiles/unit_tests.dir/__/__/messages/message_queue.cpp.o: tests/unit/CMakeFiles/unit_tests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/matev/Documents/Infotexs/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object tests/unit/CMakeFiles/unit_tests.dir/__/__/messages/message_queue.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/matev/Documents/Infotexs/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object tests/unit/CMakeFiles/unit_tests.dir/__/__/messages/message_queue.cpp.o"
 	cd /home/matev/Documents/Infotexs/build/tests/unit && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/unit/CMakeFiles/unit_tests.dir/__/__/messages/message_queue.cpp.o -MF CMakeFiles/unit_tests.dir/__/__/messages/message_queue.cpp.o.d -o CMakeFiles/unit_tests.dir/__/__/messages/message_queue.cpp.o -c /home/matev/Documents/Infotexs/messages/message_queue.cpp
 
 tests/unit/CMakeFiles/unit_tests.dir/__/__/messages/message_queue.cpp.i: cmake_force
@@ -243,7 +257,7 @@ tests/unit/CMakeFiles/unit_tests.dir/__/__/messages/message_queue.cpp.s: cmake_f
 tests/unit/CMakeFiles/unit_tests.dir/__/__/statistics/statistics.cpp.o: tests/unit/CMakeFiles/unit_tests.dir/flags.make
 tests/unit/CMakeFiles/unit_tests.dir/__/__/statistics/statistics.cpp.o: /home/matev/Documents/Infotexs/statistics/statistics.cpp
 tests/unit/CMakeFiles/unit_tests.dir/__/__/statistics/statistics.cpp.o: tests/unit/CMakeFiles/unit_tests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/matev/Documents/Infotexs/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object tests/unit/CMakeFiles/unit_tests.dir/__/__/statistics/statistics.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/matev/Documents/Infotexs/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object tests/unit/CMakeFiles/unit_tests.dir/__/__/statistics/statistics.cpp.o"
 	cd /home/matev/Documents/Infotexs/build/tests/unit && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/unit/CMakeFiles/unit_tests.dir/__/__/statistics/statistics.cpp.o -MF CMakeFiles/unit_tests.dir/__/__/statistics/statistics.cpp.o.d -o CMakeFiles/unit_tests.dir/__/__/statistics/statistics.cpp.o -c /home/matev/Documents/Infotexs/statistics/statistics.cpp
 
 tests/unit/CMakeFiles/unit_tests.dir/__/__/statistics/statistics.cpp.i: cmake_force
@@ -257,7 +271,7 @@ tests/unit/CMakeFiles/unit_tests.dir/__/__/statistics/statistics.cpp.s: cmake_fo
 tests/unit/CMakeFiles/unit_tests.dir/__/__/common_lib/importance_level.cpp.o: tests/unit/CMakeFiles/unit_tests.dir/flags.make
 tests/unit/CMakeFiles/unit_tests.dir/__/__/common_lib/importance_level.cpp.o: /home/matev/Documents/Infotexs/common_lib/importance_level.cpp
 tests/unit/CMakeFiles/unit_tests.dir/__/__/common_lib/importance_level.cpp.o: tests/unit/CMakeFiles/unit_tests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/matev/Documents/Infotexs/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object tests/unit/CMakeFiles/unit_tests.dir/__/__/common_lib/importance_level.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/matev/Documents/Infotexs/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object tests/unit/CMakeFiles/unit_tests.dir/__/__/common_lib/importance_level.cpp.o"
 	cd /home/matev/Documents/Infotexs/build/tests/unit && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/unit/CMakeFiles/unit_tests.dir/__/__/common_lib/importance_level.cpp.o -MF CMakeFiles/unit_tests.dir/__/__/common_lib/importance_level.cpp.o.d -o CMakeFiles/unit_tests.dir/__/__/common_lib/importance_level.cpp.o -c /home/matev/Documents/Infotexs/common_lib/importance_level.cpp
 
 tests/unit/CMakeFiles/unit_tests.dir/__/__/common_lib/importance_level.cpp.i: cmake_force
@@ -271,7 +285,7 @@ tests/unit/CMakeFiles/unit_tests.dir/__/__/common_lib/importance_level.cpp.s: cm
 tests/unit/CMakeFiles/unit_tests.dir/__/__/common_lib/time_utils.cpp.o: tests/unit/CMakeFiles/unit_tests.dir/flags.make
 tests/unit/CMakeFiles/unit_tests.dir/__/__/common_lib/time_utils.cpp.o: /home/matev/Documents/Infotexs/common_lib/time_utils.cpp
 tests/unit/CMakeFiles/unit_tests.dir/__/__/common_lib/time_utils.cpp.o: tests/unit/CMakeFiles/unit_tests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/matev/Documents/Infotexs/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object tests/unit/CMakeFiles/unit_tests.dir/__/__/common_lib/time_utils.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/matev/Documents/Infotexs/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object tests/unit/CMakeFiles/unit_tests.dir/__/__/common_lib/time_utils.cpp.o"
 	cd /home/matev/Documents/Infotexs/build/tests/unit && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/unit/CMakeFiles/unit_tests.dir/__/__/common_lib/time_utils.cpp.o -MF CMakeFiles/unit_tests.dir/__/__/common_lib/time_utils.cpp.o.d -o CMakeFiles/unit_tests.dir/__/__/common_lib/time_utils.cpp.o -c /home/matev/Documents/Infotexs/common_lib/time_utils.cpp
 
 tests/unit/CMakeFiles/unit_tests.dir/__/__/common_lib/time_utils.cpp.i: cmake_force
@@ -293,6 +307,7 @@ unit_tests_OBJECTS = \
 "CMakeFiles/unit_tests.dir/statistics_test.cpp.o" \
 "CMakeFiles/unit_tests.dir/__/__/argument_parsers/file_argument_parser.cpp.o" \
 "CMakeFiles/unit_tests.dir/__/__/argument_parsers/socket_argument_parser.cpp.o" \
+"CMakeFiles/unit_tests.dir/__/__/argument_parsers/statistic_argument_parser.cpp.o" \
 "CMakeFiles/unit_tests.dir/__/__/message_deserializer/message_deserializer.cpp.o" \
 "CMakeFiles/unit_tests.dir/__/__/message_parser/message_parser.cpp.o" \
 "CMakeFiles/unit_tests.dir/__/__/messages/message_queue.cpp.o" \
@@ -312,6 +327,7 @@ tests/unit/unit_tests: tests/unit/CMakeFiles/unit_tests.dir/message_queue_test.c
 tests/unit/unit_tests: tests/unit/CMakeFiles/unit_tests.dir/statistics_test.cpp.o
 tests/unit/unit_tests: tests/unit/CMakeFiles/unit_tests.dir/__/__/argument_parsers/file_argument_parser.cpp.o
 tests/unit/unit_tests: tests/unit/CMakeFiles/unit_tests.dir/__/__/argument_parsers/socket_argument_parser.cpp.o
+tests/unit/unit_tests: tests/unit/CMakeFiles/unit_tests.dir/__/__/argument_parsers/statistic_argument_parser.cpp.o
 tests/unit/unit_tests: tests/unit/CMakeFiles/unit_tests.dir/__/__/message_deserializer/message_deserializer.cpp.o
 tests/unit/unit_tests: tests/unit/CMakeFiles/unit_tests.dir/__/__/message_parser/message_parser.cpp.o
 tests/unit/unit_tests: tests/unit/CMakeFiles/unit_tests.dir/__/__/messages/message_queue.cpp.o
@@ -322,7 +338,7 @@ tests/unit/unit_tests: tests/unit/CMakeFiles/unit_tests.dir/build.make
 tests/unit/unit_tests: tests/unit/CMakeFiles/unit_tests.dir/compiler_depend.ts
 tests/unit/unit_tests: libfileLogger.a
 tests/unit/unit_tests: tests/unit/CMakeFiles/unit_tests.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/matev/Documents/Infotexs/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Linking CXX executable unit_tests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/matev/Documents/Infotexs/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Linking CXX executable unit_tests"
 	cd /home/matev/Documents/Infotexs/build/tests/unit && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/unit_tests.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

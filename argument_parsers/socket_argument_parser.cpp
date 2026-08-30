@@ -181,6 +181,11 @@ void SocketArgumentParser::ParseLevelOption(int argc, char* argv[], int index) {
   }
 
   options_.level = ParseImportanceLevel(argv[index + 1]);
+
+  if (options_.level == ImportanceLevel::kUndefiend) {
+    error_message_ = "Invalid importance level: " + std::string(argv[index + 1]);
+    return;
+  }
   has_level_ = true;
 }
 

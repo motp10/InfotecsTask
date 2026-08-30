@@ -2,6 +2,7 @@
 
 #include "argument_parsers/file_argument_parser.h"
 #include "argument_parsers/socket_argument_parser.h"
+#include "argument_parsers/statistic_argument_parser.h"
 #include "test_framework.h"
 
 // Проверяет успешный разбор обязательных параметров файлового и сетевого логгеров.
@@ -48,4 +49,24 @@ void TestArgumentParsers() {
   CHECK(invalid_port_parser.ParseCommandLineArguments(
             static_cast<int>(invalid_port_arguments.size()),
             invalid_port_arguments.data()) == ParseResult::kError);
+
+  StatisticArgumentParser statistic_parser;
+  std::vector<char*> statistic_arguments{
+      const_cast<char*>("statistic_app"), const_cast<char*>("-t"),
+      const_cast<char*>("5"), const_cast<char*>("-n"),
+      const_cast<char*>("10")};
+  CHECK(statistic_parser.ParseCommandLineArguments(
+            static_cast<int>(statistic_arguments.size()),
+            statistic_arguments.data()) == ParseResult::kOk);
+  CHECK(statistic_parser.Options().period_seconds == 5);
+  CHECK(statistic_parser.Options().messages_to_show == 10);
+
+  StatisticArgumentParser invalid_statistic_parser;
+  std::vector<char*> invalid_statistic_arguments{
+      const_cast<char*>("statistic_app"), const_cast<char*>("-t"),
+      const_cast<char*>("0"), const_cast<char*>("-n"),
+      const_cast<char*>("10")};
+  CHECK(invalid_statistic_parser.ParseCommandLineArguments(
+            static_cast<int>(invalid_statistic_arguments.size()),
+            invalid_statistic_arguments.data()) == ParseResult::kError);
 }

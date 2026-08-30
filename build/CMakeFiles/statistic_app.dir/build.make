@@ -86,10 +86,24 @@ CMakeFiles/statistic_app.dir/statistic_app.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/statistic_app.dir/statistic_app.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/matev/Documents/Infotexs/statistic_app.cpp -o CMakeFiles/statistic_app.dir/statistic_app.cpp.s
 
+CMakeFiles/statistic_app.dir/argument_parsers/statistic_argument_parser.cpp.o: CMakeFiles/statistic_app.dir/flags.make
+CMakeFiles/statistic_app.dir/argument_parsers/statistic_argument_parser.cpp.o: /home/matev/Documents/Infotexs/argument_parsers/statistic_argument_parser.cpp
+CMakeFiles/statistic_app.dir/argument_parsers/statistic_argument_parser.cpp.o: CMakeFiles/statistic_app.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/matev/Documents/Infotexs/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/statistic_app.dir/argument_parsers/statistic_argument_parser.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/statistic_app.dir/argument_parsers/statistic_argument_parser.cpp.o -MF CMakeFiles/statistic_app.dir/argument_parsers/statistic_argument_parser.cpp.o.d -o CMakeFiles/statistic_app.dir/argument_parsers/statistic_argument_parser.cpp.o -c /home/matev/Documents/Infotexs/argument_parsers/statistic_argument_parser.cpp
+
+CMakeFiles/statistic_app.dir/argument_parsers/statistic_argument_parser.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/statistic_app.dir/argument_parsers/statistic_argument_parser.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/matev/Documents/Infotexs/argument_parsers/statistic_argument_parser.cpp > CMakeFiles/statistic_app.dir/argument_parsers/statistic_argument_parser.cpp.i
+
+CMakeFiles/statistic_app.dir/argument_parsers/statistic_argument_parser.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/statistic_app.dir/argument_parsers/statistic_argument_parser.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/matev/Documents/Infotexs/argument_parsers/statistic_argument_parser.cpp -o CMakeFiles/statistic_app.dir/argument_parsers/statistic_argument_parser.cpp.s
+
 CMakeFiles/statistic_app.dir/server/server.cpp.o: CMakeFiles/statistic_app.dir/flags.make
 CMakeFiles/statistic_app.dir/server/server.cpp.o: /home/matev/Documents/Infotexs/server/server.cpp
 CMakeFiles/statistic_app.dir/server/server.cpp.o: CMakeFiles/statistic_app.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/matev/Documents/Infotexs/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/statistic_app.dir/server/server.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/matev/Documents/Infotexs/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/statistic_app.dir/server/server.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/statistic_app.dir/server/server.cpp.o -MF CMakeFiles/statistic_app.dir/server/server.cpp.o.d -o CMakeFiles/statistic_app.dir/server/server.cpp.o -c /home/matev/Documents/Infotexs/server/server.cpp
 
 CMakeFiles/statistic_app.dir/server/server.cpp.i: cmake_force
@@ -103,7 +117,7 @@ CMakeFiles/statistic_app.dir/server/server.cpp.s: cmake_force
 CMakeFiles/statistic_app.dir/message_deserializer/message_deserializer.cpp.o: CMakeFiles/statistic_app.dir/flags.make
 CMakeFiles/statistic_app.dir/message_deserializer/message_deserializer.cpp.o: /home/matev/Documents/Infotexs/message_deserializer/message_deserializer.cpp
 CMakeFiles/statistic_app.dir/message_deserializer/message_deserializer.cpp.o: CMakeFiles/statistic_app.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/matev/Documents/Infotexs/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/statistic_app.dir/message_deserializer/message_deserializer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/matev/Documents/Infotexs/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/statistic_app.dir/message_deserializer/message_deserializer.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/statistic_app.dir/message_deserializer/message_deserializer.cpp.o -MF CMakeFiles/statistic_app.dir/message_deserializer/message_deserializer.cpp.o.d -o CMakeFiles/statistic_app.dir/message_deserializer/message_deserializer.cpp.o -c /home/matev/Documents/Infotexs/message_deserializer/message_deserializer.cpp
 
 CMakeFiles/statistic_app.dir/message_deserializer/message_deserializer.cpp.i: cmake_force
@@ -117,7 +131,7 @@ CMakeFiles/statistic_app.dir/message_deserializer/message_deserializer.cpp.s: cm
 CMakeFiles/statistic_app.dir/statistics/statistics.cpp.o: CMakeFiles/statistic_app.dir/flags.make
 CMakeFiles/statistic_app.dir/statistics/statistics.cpp.o: /home/matev/Documents/Infotexs/statistics/statistics.cpp
 CMakeFiles/statistic_app.dir/statistics/statistics.cpp.o: CMakeFiles/statistic_app.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/matev/Documents/Infotexs/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/statistic_app.dir/statistics/statistics.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/matev/Documents/Infotexs/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/statistic_app.dir/statistics/statistics.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/statistic_app.dir/statistics/statistics.cpp.o -MF CMakeFiles/statistic_app.dir/statistics/statistics.cpp.o.d -o CMakeFiles/statistic_app.dir/statistics/statistics.cpp.o -c /home/matev/Documents/Infotexs/statistics/statistics.cpp
 
 CMakeFiles/statistic_app.dir/statistics/statistics.cpp.i: cmake_force
@@ -131,7 +145,7 @@ CMakeFiles/statistic_app.dir/statistics/statistics.cpp.s: cmake_force
 CMakeFiles/statistic_app.dir/statistics/statistics_printer.cpp.o: CMakeFiles/statistic_app.dir/flags.make
 CMakeFiles/statistic_app.dir/statistics/statistics_printer.cpp.o: /home/matev/Documents/Infotexs/statistics/statistics_printer.cpp
 CMakeFiles/statistic_app.dir/statistics/statistics_printer.cpp.o: CMakeFiles/statistic_app.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/matev/Documents/Infotexs/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/statistic_app.dir/statistics/statistics_printer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/matev/Documents/Infotexs/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/statistic_app.dir/statistics/statistics_printer.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/statistic_app.dir/statistics/statistics_printer.cpp.o -MF CMakeFiles/statistic_app.dir/statistics/statistics_printer.cpp.o.d -o CMakeFiles/statistic_app.dir/statistics/statistics_printer.cpp.o -c /home/matev/Documents/Infotexs/statistics/statistics_printer.cpp
 
 CMakeFiles/statistic_app.dir/statistics/statistics_printer.cpp.i: cmake_force
@@ -145,7 +159,7 @@ CMakeFiles/statistic_app.dir/statistics/statistics_printer.cpp.s: cmake_force
 CMakeFiles/statistic_app.dir/common_lib/importance_level.cpp.o: CMakeFiles/statistic_app.dir/flags.make
 CMakeFiles/statistic_app.dir/common_lib/importance_level.cpp.o: /home/matev/Documents/Infotexs/common_lib/importance_level.cpp
 CMakeFiles/statistic_app.dir/common_lib/importance_level.cpp.o: CMakeFiles/statistic_app.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/matev/Documents/Infotexs/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/statistic_app.dir/common_lib/importance_level.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/matev/Documents/Infotexs/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/statistic_app.dir/common_lib/importance_level.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/statistic_app.dir/common_lib/importance_level.cpp.o -MF CMakeFiles/statistic_app.dir/common_lib/importance_level.cpp.o.d -o CMakeFiles/statistic_app.dir/common_lib/importance_level.cpp.o -c /home/matev/Documents/Infotexs/common_lib/importance_level.cpp
 
 CMakeFiles/statistic_app.dir/common_lib/importance_level.cpp.i: cmake_force
@@ -159,7 +173,7 @@ CMakeFiles/statistic_app.dir/common_lib/importance_level.cpp.s: cmake_force
 CMakeFiles/statistic_app.dir/common_lib/time_utils.cpp.o: CMakeFiles/statistic_app.dir/flags.make
 CMakeFiles/statistic_app.dir/common_lib/time_utils.cpp.o: /home/matev/Documents/Infotexs/common_lib/time_utils.cpp
 CMakeFiles/statistic_app.dir/common_lib/time_utils.cpp.o: CMakeFiles/statistic_app.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/matev/Documents/Infotexs/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/statistic_app.dir/common_lib/time_utils.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/matev/Documents/Infotexs/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/statistic_app.dir/common_lib/time_utils.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/statistic_app.dir/common_lib/time_utils.cpp.o -MF CMakeFiles/statistic_app.dir/common_lib/time_utils.cpp.o.d -o CMakeFiles/statistic_app.dir/common_lib/time_utils.cpp.o -c /home/matev/Documents/Infotexs/common_lib/time_utils.cpp
 
 CMakeFiles/statistic_app.dir/common_lib/time_utils.cpp.i: cmake_force
@@ -173,6 +187,7 @@ CMakeFiles/statistic_app.dir/common_lib/time_utils.cpp.s: cmake_force
 # Object files for target statistic_app
 statistic_app_OBJECTS = \
 "CMakeFiles/statistic_app.dir/statistic_app.cpp.o" \
+"CMakeFiles/statistic_app.dir/argument_parsers/statistic_argument_parser.cpp.o" \
 "CMakeFiles/statistic_app.dir/server/server.cpp.o" \
 "CMakeFiles/statistic_app.dir/message_deserializer/message_deserializer.cpp.o" \
 "CMakeFiles/statistic_app.dir/statistics/statistics.cpp.o" \
@@ -184,6 +199,7 @@ statistic_app_OBJECTS = \
 statistic_app_EXTERNAL_OBJECTS =
 
 statistic_app: CMakeFiles/statistic_app.dir/statistic_app.cpp.o
+statistic_app: CMakeFiles/statistic_app.dir/argument_parsers/statistic_argument_parser.cpp.o
 statistic_app: CMakeFiles/statistic_app.dir/server/server.cpp.o
 statistic_app: CMakeFiles/statistic_app.dir/message_deserializer/message_deserializer.cpp.o
 statistic_app: CMakeFiles/statistic_app.dir/statistics/statistics.cpp.o
@@ -193,7 +209,7 @@ statistic_app: CMakeFiles/statistic_app.dir/common_lib/time_utils.cpp.o
 statistic_app: CMakeFiles/statistic_app.dir/build.make
 statistic_app: CMakeFiles/statistic_app.dir/compiler_depend.ts
 statistic_app: CMakeFiles/statistic_app.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/matev/Documents/Infotexs/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable statistic_app"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/matev/Documents/Infotexs/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable statistic_app"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/statistic_app.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
